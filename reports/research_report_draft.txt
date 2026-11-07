@@ -1,0 +1,410 @@
+Financial LLM Evaluation: Comparing Open-Weight Large Language Models 
+on Financial Question Answering Benchmarks
+
+[DRAFT — For team review and rewriting. Do not submit without revision.
+All results are placeholders until actual evaluation is complete.
+Replace all [PLACEHOLDER] sections with real results before submission.]
+
+================================================================================
+ACL 2023 Two-Column Format — 8–12 Pages
+================================================================================
+
+ABSTRACT
+
+We present a systematic empirical evaluation of six open-weight Large Language 
+Models (LLMs) on three established financial question-answering benchmarks: 
+FinanceBench, FinTextQA, and FinQA. Our study compares Qwen2.5-7B-Instruct, 
+Llama-3.1-8B-Instruct, Mistral-7B-Instruct-v0.3, Gemma-2-9B-it, 
+Phi-3.5-mini-instruct, and DeepSeek-R1-Distill-Qwen-7B under identical prompting 
+and generation conditions using the Hugging Face Inference Providers API. We 
+evaluate performance across multiple metrics including Exact Match, Token F1, 
+ROUGE-L, Numeric Accuracy, and faithfulness proxies. Additionally, we implement 
+and evaluate a Retrieval-Augmented Generation (RAG) pipeline using FAISS-based 
+dense retrieval, comparing direct LLM answering against RAG-augmented inference. 
+Our results show [PLACEHOLDER: summarize key finding after evaluation]. We 
+release all evaluation code, prompts, and results to support reproducible research 
+in financial NLP.
+
+================================================================================
+1. INTRODUCTION
+================================================================================
+
+Large Language Models have demonstrated impressive performance across general 
+natural language understanding and generation tasks (Brown et al., 2020; 
+Touvron et al., 2023; Jiang et al., 2023). However, the financial domain presents 
+unique challenges that go beyond general language understanding. Financial question 
+answering requires: (1) precise numerical reasoning over tabular data from earnings 
+reports and balance sheets; (2) faithful extraction of specific figures from dense 
+financial documents such as SEC 10-K and 10-Q filings; (3) understanding of 
+specialized financial concepts and regulatory language; and (4) resistance to 
+hallucination, which is particularly costly in financial decision-making contexts.
+
+Despite growing interest in financial NLP, there remain significant gaps in our 
+understanding of how open-weight LLMs — models whose weights are publicly 
+available — compare on specialized financial benchmarks. Most existing studies 
+either focus on proprietary models (e.g., GPT-4), evaluate a single benchmark, 
+or do not control for inference conditions across models. This makes fair 
+comparison difficult.
+
+This paper addresses this gap with the following contributions:
+
+1. We perform a controlled comparison of six diverse open-weight LLMs across 
+   three financial QA benchmarks under identical prompting and generation conditions.
+
+2. We implement and evaluate a RAG pipeline, comparing direct LLM answering 
+   against retrieval-augmented inference.
+
+3. We analyze model performance by question category (numerical reasoning, 
+   conceptual understanding, information extraction), providing insights into 
+   where different model families excel.
+
+4. We release all evaluation code, datasets, and reproducibility instructions.
+
+================================================================================
+2. RELATED WORK
+================================================================================
+
+2.1 Financial Question Answering
+
+The FinQA dataset (Chen et al., 2021) introduced the task of numerical reasoning 
+over financial tables and text, requiring models to generate and execute 
+multi-step calculation programs. The dataset demonstrated that even large models 
+struggle with multi-step financial arithmetic. Subsequent work introduced 
+ConvFinQA (Zheng et al., 2022) for multi-turn financial conversations.
+
+FinanceBench (Islam et al., 2023) extended financial QA to cover document 
+understanding over real SEC filings, testing whether models can accurately 
+extract and reason about figures from actual company disclosures. The benchmark 
+found that even frontier models like GPT-4 made significant errors, particularly 
+on multi-hop questions.
+
+FinTextQA (Chen et al., 2024) focused on long-form financial question answering 
+over regulatory and textbook content, addressing a gap in existing benchmarks 
+that focused primarily on short, factoid-style answers.
+
+2.2 Open-Weight Language Models
+
+The release of Llama (Touvron et al., 2023) and subsequently Llama 2 and 3 
+(Touvron et al., 2023; Meta AI, 2024) established a strong baseline for 
+open-weight model evaluation. Mistral 7B (Jiang et al., 2023) demonstrated 
+that smaller models with efficient architectures (sliding window attention, 
+grouped query attention) could match larger predecessors. Qwen2.5 (Alibaba, 
+2024) introduced strong multilingual and mathematical capabilities. 
+Phi-3 (Abdin et al., 2024) showed that aggressive data quality filtering 
+enables small models to punch above their weight. DeepSeek-R1 (DeepSeek, 2025) 
+introduced chain-of-thought distillation for reasoning tasks.
+
+2.3 Retrieval-Augmented Generation
+
+RAG (Lewis et al., 2020) demonstrated that combining parametric knowledge in 
+LLM weights with non-parametric retrieval from an external corpus improves 
+performance on knowledge-intensive tasks. For financial QA, RAG is particularly 
+relevant because financial documents are long, regularly updated, and contain 
+highly specific numerical information that may not be well captured in model 
+training data. Prior work has applied RAG to financial QA (Yang et al., 2023) 
+but systematic comparison across model families remains limited.
+
+================================================================================
+3. DATASETS
+================================================================================
+
+3.1 FinanceBench
+
+FinanceBench (Islam et al., 2023) contains questions derived from real SEC 
+10-K and 10-Q filings from publicly traded companies. The full benchmark 
+contains 10,231 questions, but the publicly available portion consists of 
+150 questions with associated evidence from financial documents. Questions 
+span factoid retrieval, numerical calculation, and comparative reasoning 
+across different reporting periods. We evaluate on the 150 publicly available 
+questions and note that our results cannot be generalized to the full benchmark.
+
+3.2 FinTextQA
+
+FinTextQA (Chen et al., 2024) addresses long-form financial question answering. 
+The publicly released portion covers policy and regulatory financial content. 
+Approximately 240 question-answer pairs are available. The textbook portion 
+described in the original paper is not publicly available. All results are 
+therefore reported on the policy/regulation subset, and we document this 
+limitation accordingly.
+
+3.3 FinQA
+
+FinQA (Chen et al., 2021) focuses on numerical reasoning over financial earnings 
+reports. Each instance includes a table (from an earnings statement or similar 
+document), surrounding text, a question, and a reference computation program 
+specifying the arithmetic operations required to arrive at the correct answer. 
+We use the official test split, which contains approximately 1,147 questions.
+
+3.4 Dataset Summary
+
+[PLACEHOLDER TABLE — replace with actual numbers after loading datasets]
+
+| Dataset     | Public Questions | Question Types           | Numerical % |
+|-------------|-----------------|--------------------------|-------------|
+| FinanceBench | 150            | Factoid, Multi-step, Calc | ~60%       |
+| FinTextQA   | ~240            | Long-form, Regulatory     | ~20%       |
+| FinQA (test)| ~1,147          | Numerical reasoning       | ~95%       |
+
+================================================================================
+4. MODELS
+================================================================================
+
+We evaluate six open-weight large language models representing diverse model 
+families, parameter counts, and training approaches:
+
+(1) Qwen2.5-7B-Instruct (Alibaba, 2024): A 7B-parameter instruction-tuned model 
+from the Qwen 2.5 series, notable for strong mathematical and multilingual 
+capabilities. Accessed via HF ID: Qwen/Qwen2.5-7B-Instruct.
+
+(2) Llama-3.1-8B-Instruct (Meta AI, 2024): Meta's 8B instruction-following model 
+from the Llama 3.1 release, featuring improved context length and instruction 
+adherence. Requires license acceptance. HF ID: meta-llama/Llama-3.1-8B-Instruct.
+
+(3) Mistral-7B-Instruct-v0.3 (Mistral AI, 2024): A 7B model using sliding window 
+attention and grouped query attention for efficient inference. HF ID: 
+mistralai/Mistral-7B-Instruct-v0.3.
+
+(4) Gemma-2-9B-it (Google, 2024): Google's 9B instruction-tuned Gemma 2 model. 
+Requires license acceptance. HF ID: google/gemma-2-9b-it.
+
+(5) Phi-3.5-mini-instruct (Microsoft, 2024): A 3.8B model trained on highly 
+curated data, demonstrating strong benchmark performance relative to its size. 
+HF ID: microsoft/Phi-3.5-mini-instruct.
+
+(6) DeepSeek-R1-Distill-Qwen-7B (DeepSeek, 2025): A 7B model distilled from 
+DeepSeek-R1 with chain-of-thought reasoning capabilities. HF ID: 
+deepseek-ai/DeepSeek-R1-Distill-Qwen-7B.
+
+================================================================================
+5. METHODOLOGY
+================================================================================
+
+5.1 Inference Setup
+
+All six models are queried through the Hugging Face Inference Providers API 
+using an OpenAI-compatible interface. This ensures consistent infrastructure 
+across all models, preventing hardware or batching differences from introducing 
+confounds. Generation parameters are identical for all models: temperature=0 
+(greedy decoding) for reproducibility, maximum 512 new tokens.
+
+5.2 Prompt Design
+
+All models receive a consistent prompt structure:
+- System message: "You are a financial analysis expert. Answer the question 
+  based on the provided financial context. Be precise..."
+- User message: Financial Context followed by the Question.
+
+This structure follows standard instruction-following conventions compatible 
+with all six models' chat templates.
+
+5.3 Experiment A: Direct LLM Evaluation
+
+In Experiment A, each model receives the question and the benchmark's provided 
+context (the relevant passage or table from the financial document). This 
+measures the model's ability to understand and use already-retrieved evidence.
+
+5.4 Experiment B: RAG-Augmented Evaluation
+
+In Experiment B, we replace the benchmark's provided context with retrieved 
+context from our RAG pipeline. The corpus is built exclusively from document 
+context fields across all three datasets; reference answers are never included 
+in the retrieval corpus.
+
+We use sentence-transformers/all-MiniLM-L6-v2 to generate 384-dimensional 
+dense embeddings, indexed in FAISS with inner-product similarity. At query 
+time, the top-5 chunks are retrieved and concatenated as the model's context. 
+We also evaluate a BM25 sparse retrieval baseline using rank_bm25.
+
+================================================================================
+6. EVALUATION METRICS
+================================================================================
+
+We evaluate across five metric categories:
+
+Answer Correctness:
+• Exact Match (EM): 1 if normalized prediction equals normalized reference.
+  Normalization: lowercase, punctuation removal, whitespace normalization.
+• Token F1: Precision-recall F1 at the token level, as in SQuAD evaluation.
+• ROUGE-L: Longest common subsequence F1 between prediction and reference.
+
+Numerical Accuracy:
+• Numeric Accuracy: Extracts numeric values from both prediction and reference,
+  normalizes currency symbols, thousands separators, and percentage units, 
+  and applies a 0.5% relative error tolerance.
+
+Answer Quality:
+• BERTScore: Contextual embedding-based precision, recall, and F1.
+• Semantic Similarity: Cosine similarity between sentence-transformer embeddings.
+
+Faithfulness:
+• Lexical Faithfulness: Fraction of model's content tokens appearing in context.
+  This is a proxy; NLI-based faithfulness would be more rigorous.
+• Abstention Rate: Fraction of responses correctly indicating insufficient information.
+
+Efficiency:
+• Latency: Wall-clock inference time per question.
+• Token Usage: Prompt and completion tokens per request.
+
+================================================================================
+7. RESULTS
+================================================================================
+
+[PLACEHOLDER SECTION — Replace with actual experimental results]
+
+7.1 Direct LLM Evaluation (Experiment A)
+
+[Table: Model × Metric for Experiment A]
+Insert actual results after running evaluation.
+
+7.2 RAG vs Direct Comparison (Experiment B)
+
+[Table: Direct vs RAG Token F1 per model and dataset]
+Insert actual results after running evaluation.
+
+7.3 Numerical Reasoning Performance
+
+[Table: Numeric Accuracy by model on FinQA test set]
+Insert actual results after running evaluation.
+
+7.4 Question Category Analysis
+
+[Figure/Table: Performance by question category]
+Insert actual results after running evaluation.
+
+7.5 Latency and Efficiency
+
+[Table: Latency, token usage per model]
+Insert actual results after running evaluation.
+
+================================================================================
+8. DISCUSSION
+================================================================================
+
+[PLACEHOLDER SECTION — Replace with actual interpretation]
+
+8.1 Model Comparison
+
+[Discuss which model(s) performed best and why based on actual results]
+
+8.2 RAG Effectiveness
+
+[Discuss when RAG helped, when it didn't, and hypothesize why]
+
+8.3 Numerical Reasoning Challenges
+
+[Discuss model failure modes on numerical questions]
+
+8.4 Faithfulness and Hallucination
+
+[Discuss faithfulness patterns across models]
+
+================================================================================
+9. LIMITATIONS
+================================================================================
+
+This work has several important limitations that readers should consider:
+
+Dataset availability: We evaluate on publicly available portions of each 
+benchmark only. FinanceBench provides 150 of 10,231 questions; FinTextQA 
+provides ~240 of a larger described dataset; only FinQA's test split is fully 
+available. Our results cannot be generalized to full benchmark performance.
+
+Evaluation metric limitations: Exact Match is a strict metric that underestimates 
+performance on paraphrased correct answers. Semantic similarity and BERTScore 
+measure surface similarity, not factual correctness. Our faithfulness metric 
+is a lexical proxy and cannot detect subtle factual inaccuracies.
+
+Inference provider limitations: We used the Hugging Face Inference Providers 
+serverless API. Provider-side optimizations (batching, quantization) may 
+differ from paper-reported performance. Latency measurements reflect network 
+conditions and queuing, not pure model inference time.
+
+Evaluation scope: We evaluate models in a zero-shot setting. Few-shot or 
+fine-tuned models would likely perform substantially better, particularly on 
+FinQA's numerical reasoning programs.
+
+Pilot evaluation: Default settings use a 5-question pilot sample. Full-scale 
+results require running with PILOT_MODE=False and appropriate API quota.
+
+================================================================================
+10. CONCLUSION
+================================================================================
+
+We presented a systematic comparison of six open-weight LLMs on three financial 
+QA benchmarks, evaluating both direct answering and RAG-augmented inference. 
+Our study provides [describe actual finding] insights for practitioners selecting 
+LLMs for financial applications.
+
+[PLACEHOLDER: One-paragraph summary of actual conclusions once results are available]
+
+Future work should explore: (1) fine-tuning on financial corpora; (2) NLI-based 
+faithfulness evaluation; (3) larger model variants; (4) multi-document RAG with 
+access to full SEC filing corpora; and (5) evaluation on the complete FinanceBench 
+benchmark when it becomes fully available.
+
+================================================================================
+REFERENCES
+================================================================================
+
+Abdin, M., et al. (2024). Phi-3 Technical Report: A Highly Capable Language Model 
+Locally on Your Phone. arXiv:2404.14219.
+
+Brown, T., et al. (2020). Language Models are Few-Shot Learners. 
+Advances in Neural Information Processing Systems, 33.
+
+Chen, J., et al. (2024). FinTextQA: A Dataset for Long-form Financial Question 
+Answering. Proceedings of the 62nd Annual Meeting of the Association for 
+Computational Linguistics (ACL 2024), Long Papers.
+
+Chen, Z., et al. (2021). FinQA: A Dataset of Numerical Reasoning over Financial 
+Data. Proceedings of the 2021 Conference on Empirical Methods in Natural Language 
+Processing (EMNLP 2021).
+
+DeepSeek. (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via 
+Reinforcement Learning. arXiv:2501.12948.
+
+Islam, P., et al. (2023). FinanceBench: A New Benchmark for Financial Question 
+Answering. arXiv:2311.11944.
+
+Jiang, A. Q., et al. (2023). Mistral 7B. arXiv:2310.06825.
+
+Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive 
+NLP Tasks. Advances in Neural Information Processing Systems, 33.
+
+Meta AI. (2024). The Llama 3 Herd of Models. arXiv:2407.21783.
+
+Touvron, H., et al. (2023). Llama 2: Open Foundation and Fine-Tuned Chat Models. 
+arXiv:2307.09288.
+
+Yang, A., et al. (2024). Qwen2.5 Technical Report. arXiv:2412.15115.
+
+Zheng, Z., et al. (2022). ConvFinQA: Exploring the Chain of Numerical Reasoning 
+in Conversational Finance Question Answering. 
+Proceedings of EMNLP 2022.
+
+================================================================================
+APPENDIX: PROMPT TEMPLATE
+================================================================================
+
+System: "You are a financial analysis expert. Answer the question based on the 
+provided financial context. Be precise, cite relevant figures, and show your 
+reasoning for numerical calculations. If the answer cannot be determined from 
+the context, state that explicitly."
+
+User: "Financial Context:\n{context}\n\nQuestion: {question}\n\nAnswer the 
+question based on the context above."
+
+================================================================================
+APPENDIX: REPRODUCIBILITY CHECKLIST
+================================================================================
+
+□ Python 3.12+ installed
+□ requirements.txt dependencies installed
+□ HF_TOKEN set in .env (required for gated models)
+□ Llama 3.1 license accepted: https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+□ Gemma 2 license accepted: https://huggingface.co/google/gemma-2-9b-it
+□ Notebook executed cell-by-cell in sequential order
+□ PILOT_MODE=False set for full evaluation
+□ Results saved in results/metrics/*.csv
+□ Figures saved in results/plots/*.png
+

@@ -1,0 +1,70 @@
+# =============================================================================
+# .gitignore — Financial LLM Evaluation Project
+# =============================================================================
+
+# Environment & secrets
+.env
+*.env
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Large data files (store outside repo or use DVC/Git LFS)
+data/raw/*.json
+data/raw/*.jsonl
+data/raw/*.csv
+data/raw/*.parquet
+data/documents/*.pdf
+data/documents/*.txt
+
+# Keep processed + sample data tracked (small files)
+!data/processed/.gitkeep
+!data/raw/.gitkeep
+!data/documents/.gitkeep
+
+# Results (can be large)
+results/model_responses/*.json
+results/model_responses/*.jsonl
+
+# Checkpoints
+*.ckpt
+*.pth
+checkpoints/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Hugging Face cache
+.cache/
+~/.cache/huggingface/
+

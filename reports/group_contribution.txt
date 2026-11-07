@@ -1,0 +1,222 @@
+Group Contribution Document
+Financial LLM Evaluation: Comparing Open-Weight Large Language Models 
+on Financial Question Answering Benchmarks
+
+IIT Guwahati | B.Tech Data Science & Artificial Intelligence | Big Data Analytics Course
+
+================================================================================
+IMPORTANT NOTE
+================================================================================
+This is a TEMPLATE document with placeholder names and roll numbers.
+Each team member must:
+1. Fill in their actual name and roll number.
+2. Review the contribution statements and edit them to reflect actual work done.
+3. Confirm that the described contributions are accurate before submission.
+Do NOT submit with placeholder text.
+================================================================================
+
+GROUP MEMBERS
+
+Member 1: [Name] | Roll Number: [Roll No.] | Email: [email@iitg.ac.in]
+Member 2: [Name] | Roll Number: [Roll No.] | Email: [email@iitg.ac.in]
+Member 3: [Name] | Roll Number: [Roll No.] | Email: [email@iitg.ac.in]
+
+================================================================================
+CONTRIBUTION BREAKDOWN
+================================================================================
+
+----------------------------------------------------------------------------
+AREA 1: DATASET ACQUISITION AND PREPROCESSING
+Primary Contributor: Member 1
+Supporting: Members 2, 3
+----------------------------------------------------------------------------
+
+Member 1:
+• Identified and accessed the three official dataset sources:
+  FinanceBench (PatronusAI/financebench), FinTextQA (GPS-Lab/FinTextQA),
+  and FinQA (ibm-research/finqa) from Hugging Face.
+• Developed data_loader.py with download, caching, and fallback logic.
+• Created the unified dataset schema with 10 standardized fields.
+• Documented dataset limitations accurately (public subset sizes, missing textbook
+  portion in FinTextQA, full benchmark unavailability in FinanceBench).
+• Developed preprocessing.py for cleaning, truncation, and pilot sampling.
+• Generated dataset statistics and EDA visualizations (Sections 6–8 of notebook).
+
+Member 2:
+• Reviewed dataset formats and suggested schema improvements.
+
+Member 3:
+• Verified EDA outputs and contributed to the dataset description sections
+  of the research report.
+
+----------------------------------------------------------------------------
+AREA 2: MODEL INTEGRATION AND INFERENCE PIPELINE
+Primary Contributor: Member 2
+Supporting: Members 1, 3
+----------------------------------------------------------------------------
+
+Member 2:
+• Researched all six candidate models for accessibility, licensing, and
+  Hugging Face availability.
+• Implemented model_inference.py with:
+  - Full model registry with gating status and notes
+  - OpenAI-compatible client setup for HF Inference Providers, Together AI, Groq, Ollama
+  - Uniform prompt template ensuring fair comparison across all six models
+  - Checkpoint/resume functionality using MD5-keyed JSON checkpoints
+  - Retry logic with exponential backoff via tenacity
+  - Incremental result saving (JSONL format)
+• Configured identical generation parameters (temperature=0, greedy decoding)
+  for reproducibility.
+• Executed Experiment A (Direct LLM Evaluation) and monitored API calls.
+
+Member 1:
+• Set up .env configuration and API key management.
+• Helped debug model-specific error handling.
+
+Member 3:
+• Helped analyze model response patterns and latency characteristics.
+
+----------------------------------------------------------------------------
+AREA 3: RAG IMPLEMENTATION
+Primary Contributor: Member 2
+Supporting: Member 1
+----------------------------------------------------------------------------
+
+Member 2:
+• Designed and implemented rag_pipeline.py with:
+  - Document chunking with configurable chunk_size and overlap
+  - FAISS dense retrieval index (sentence-transformers/all-MiniLM-L6-v2)
+  - BM25 sparse retrieval baseline (rank_bm25)
+  - Corpus construction ensuring reference answers are excluded
+  - build_rag_contexts() function for RAG-augmented DataFrame construction
+• Executed Experiment B (RAG Evaluation) and compared results with Experiment A.
+• Documented retrieval methodology and analyzed retrieval quality examples.
+
+Member 1:
+• Helped verify that reference answers were correctly excluded from the corpus.
+• Contributed to the RAG architecture description in the report.
+
+----------------------------------------------------------------------------
+AREA 4: EVALUATION METRICS AND STATISTICAL ANALYSIS
+Primary Contributor: Member 3
+Supporting: Members 1, 2
+----------------------------------------------------------------------------
+
+Member 3:
+• Implemented evaluation.py with:
+  - Exact Match (EM) with text normalization
+  - Token-level F1 (SQuAD-style)
+  - ROUGE-L (pure Python LCS + rouge-score library fallback)
+  - Numeric Accuracy with currency/percentage normalization and 0.5% tolerance
+  - BERTScore integration (distilbert-base-uncased)
+  - Semantic Similarity via sentence-transformers cosine similarity
+  - Lexical faithfulness proxy
+  - Abstention detection
+• Implemented compute_summary_metrics() for aggregated per-model reporting.
+• Ran statistical analysis and generated model ranking tables.
+• Generated CSV exports of all evaluation results.
+
+Member 2:
+• Provided feedback on numeric accuracy edge cases (negative values, units).
+
+Member 1:
+• Verified metric computations on sample examples.
+
+----------------------------------------------------------------------------
+AREA 5: VISUALIZATION AND RESULT INTERPRETATION
+Primary Contributor: Member 3
+Supporting: Member 1
+----------------------------------------------------------------------------
+
+Member 3:
+• Implemented visualization.py with:
+  - Grouped bar charts (metric × model × dataset)
+  - Performance heatmaps (model × metric)
+  - Radar charts for multi-metric comparison
+  - Latency vs accuracy scatter plots
+  - Direct vs RAG comparison bar charts with improvement annotations
+  - Question complexity analysis charts
+  - Token usage stacked bar charts
+  - Dataset overview charts
+• Interpreted results and drafted the Results and Discussion sections
+  of the research report.
+
+Member 1:
+• Contributed to EDA visualizations (question length distributions, etc.)
+
+----------------------------------------------------------------------------
+AREA 6: RESEARCH REPORT (ACL FORMAT)
+Primary Contributor: Member 1
+Supporting: Members 2, 3
+----------------------------------------------------------------------------
+
+Member 1:
+• Led the structure and writing of the 8–10 page research report.
+• Wrote Abstract, Introduction, Related Work, and Datasets sections.
+• Compiled references in ACL format.
+
+Member 2:
+• Wrote the Methodology, Experimental Setup, and Limitations sections.
+
+Member 3:
+• Wrote the Results, Discussion, and Conclusion sections.
+• Created all figures included in the report.
+
+All members:
+• Reviewed the complete draft for accuracy and coherence.
+• Rewrote AI-drafted content in their own words.
+• Verified all cited results against actual experimental outputs.
+
+----------------------------------------------------------------------------
+AREA 7: PRESENTATION AND VIDEO
+Primary Contributor: All Members Equally
+----------------------------------------------------------------------------
+
+Member 1:
+• Created PowerPoint slides.
+• Presented Sections: Introduction, Motivation, Datasets (~6 min).
+
+Member 2:
+• Presented Sections: Models, Methodology, Experiments (~7 min).
+
+Member 3:
+• Presented Sections: Results, Analysis, Conclusions (~7 min).
+
+All members:
+• Rehearsed and coordinated the presentation.
+• Recorded the video.
+
+================================================================================
+TIME CONTRIBUTION ESTIMATE (approximate)
+================================================================================
+
+Member 1: ~[X] hours
+  Dataset research and acquisition, data_loader.py, preprocessing.py,
+  EDA, report writing, presentation slides
+
+Member 2: ~[X] hours
+  Model research, model_inference.py, rag_pipeline.py, API debugging,
+  experiments execution, report methodology
+
+Member 3: ~[X] hours
+  evaluation.py, visualization.py, statistical analysis, results interpretation,
+  report results/discussion, video script
+
+================================================================================
+DECLARATION
+================================================================================
+
+We declare that:
+1. The contributions described above are accurate to the best of our knowledge.
+2. All experimental results reported in this project were generated by actual 
+   model evaluations, not fabricated.
+3. The research report was drafted with AI assistance and subsequently reviewed,
+   rewritten, and verified by our team.
+4. We have complied with the academic integrity and AI-use policies of IIT Guwahati
+   and the Big Data Analytics course.
+
+Signatures:
+Member 1: _____________________ Date: _________
+Member 2: _____________________ Date: _________
+Member 3: _____________________ Date: _________
+
