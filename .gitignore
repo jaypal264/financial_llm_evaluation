@@ -37,6 +37,7 @@ data/raw/*.csv
 data/raw/*.parquet
 data/documents/*.pdf
 data/documents/*.txt
+data/raw/*.xlsx
 
 # Keep processed + sample data tracked (small files)
 !data/processed/.gitkeep
@@ -46,6 +47,9 @@ data/documents/*.txt
 # Results (can be large)
 results/model_responses/*.json
 results/model_responses/*.jsonl
+
+# Scratch
+scratch/
 
 # Checkpoints
 *.ckpt
