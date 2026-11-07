@@ -97,3 +97,4 @@ htmlcov/
 .cache/
 ~/.cache/
 matplotlib/
+!.env.example
