@@ -1,13 +1,17 @@
 # =============================================================================
 # .gitignore — Financial LLM Evaluation Project
+# IIT Guwahati | Big Data Analytics Course Project
 # =============================================================================
 
-# Environment & secrets
+# --- Environment & Secrets ---
 .env
 *.env
+*.env.*
 secrets/
+*.pem
+*.key
 
-# Python
+# --- Python & Bytecode ---
 __pycache__/
 *.py[cod]
 *$py.class
@@ -20,55 +24,76 @@ dist/
 *.egg
 pip-wheel-metadata/
 
-# Virtual environments
+# --- Virtual Environments ---
 venv/
 env/
 .venv/
 ENV/
+env.bak/
+venv.bak/
 
-# Jupyter
+# --- Jupyter Notebooks & Caches ---
 .ipynb_checkpoints/
 *.ipynb_checkpoints
+*/.ipynb_checkpoints/*
 
-# Large data files (store outside repo or use DVC/Git LFS)
+# --- Large Raw Datasets (Downloaded via src/data_loader.py) ---
 data/raw/*.json
 data/raw/*.jsonl
 data/raw/*.csv
 data/raw/*.parquet
+data/raw/*.xlsx
+data/raw/*.arrow
 data/documents/*.pdf
 data/documents/*.txt
-data/raw/*.xlsx
 
-# Keep processed + sample data tracked (small files)
-!data/processed/.gitkeep
+# --- Processed Embeddings & FAISS Indices (Generated Locally) ---
+data/processed/*.faiss
+data/processed/*.pkl
+data/processed/faiss_index/
+
+# --- Keep directory structure tracked with .gitkeep ---
 !data/raw/.gitkeep
+!data/processed/.gitkeep
 !data/documents/.gitkeep
 
-# Results (can be large)
+# --- Large Results & Checkpoints ---
 results/model_responses/*.json
 results/model_responses/*.jsonl
-
-# Scratch
-scratch/
-
-# Checkpoints
+results/model_responses/checkpoints/*.json
+checkpoints/
 *.ckpt
 *.pth
-checkpoints/
 
-# IDE
+# --- Keep results directory structure tracked ---
+!results/metrics/.gitkeep
+!results/model_responses/.gitkeep
+!results/model_responses/checkpoints/.gitkeep
+!results/plots/.gitkeep
+!results/summary/.gitkeep
+
+# --- Scratch & Temporary Files ---
+scratch/
+tmp/
+temp/
+
+# --- IDE & OS Metadata ---
 .idea/
 .vscode/
 *.swp
 *.swo
 .DS_Store
 Thumbs.db
+ehthumbs.db
 
-# Logs
+# --- Logs & Test Caches ---
 *.log
 logs/
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Hugging Face cache
+# --- Cache Directories ---
 .cache/
-~/.cache/huggingface/
-
+~/.cache/
+matplotlib/
