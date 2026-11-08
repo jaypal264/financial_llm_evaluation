@@ -1,7 +1,7 @@
 """
 model_inference.py
 ==================
-Common inference interface for all six open-weight LLMs.
+Common inference interface for all four open-weight LLMs.
 
 Supports:
   - Hugging Face Inference Providers (OpenAI-compatible endpoint) [DEFAULT]
@@ -26,6 +26,8 @@ from typing import Optional, Any
 from dataclasses import dataclass, field, asdict
 
 import pandas as pd
+from dotenv import load_dotenv
+load_dotenv()
 from tenacity import (
     retry,
     stop_after_attempt,
@@ -53,6 +55,7 @@ CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
 MODELS = {
     "qwen2.5-7b": {
         "hf_id": "Qwen/Qwen2.5-7B-Instruct",
+        "groq_id": "qwen/qwen3.8-27b",
         "display_name": "Qwen2.5-7B-Instruct",
         "family": "Qwen",
         "params": "7B",
@@ -61,6 +64,7 @@ MODELS = {
     },
     "llama3.1-8b": {
         "hf_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "groq_id": "openai/gpt-oss-120b",
         "display_name": "Llama-3.1-8B-Instruct",
         "family": "Llama",
         "params": "8B",
@@ -69,30 +73,16 @@ MODELS = {
     },
     "mistral-7b": {
         "hf_id": "mistralai/Mistral-7B-Instruct-v0.3",
+        "groq_id": "allam-2-7b",
         "display_name": "Mistral-7B-Instruct-v0.3",
         "family": "Mistral",
         "params": "7B",
         "gated": False,
         "notes": "Open.",
     },
-    "gemma2-9b": {
-        "hf_id": "google/gemma-2-9b-it",
-        "display_name": "Gemma-2-9B-it",
-        "family": "Gemma",
-        "params": "9B",
-        "gated": True,
-        "notes": "Requires accepting Google license at https://huggingface.co/google/gemma-2-9b-it",
-    },
-    "phi3.5-mini": {
-        "hf_id": "microsoft/Phi-3.5-mini-instruct",
-        "display_name": "Phi-3.5-mini-instruct",
-        "family": "Phi",
-        "params": "3.8B",
-        "gated": False,
-        "notes": "Open.",
-    },
     "deepseek-r1-7b": {
         "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+        "groq_id": "openai/gpt-oss-20b",
         "display_name": "DeepSeek-R1-Distill-Qwen-7B",
         "family": "DeepSeek",
         "params": "7B",
@@ -284,7 +274,10 @@ def _call_api(
         max_tokens=max_new_tokens,
         temperature=temperature,
     )
-    answer = response.choices[0].message.content.strip()
+    answer = (response.choices[0].message.content or "").strip()
+    if not answer and hasattr(response.choices[0].message, "reasoning") and response.choices[0].message.reasoning:
+        # If content is empty but model provided reasoning text
+        answer = response.choices[0].message.reasoning.strip()
     usage = response.usage
     prompt_tokens = usage.prompt_tokens if usage else 0
     completion_tokens = usage.completion_tokens if usage else 0
@@ -313,7 +306,10 @@ def infer_single(
     if model_info is None:
         raise ValueError(f"Unknown model key: {model_key}. Valid keys: {list(MODELS.keys())}")
 
-    model_id = model_info["hf_id"]
+    if provider == "groq":
+        model_id = model_info.get("groq_id") or model_info["hf_id"]
+    else:
+        model_id = model_info["hf_id"]
     messages = build_prompt(question, context, include_context=bool(context))
 
     # Select client

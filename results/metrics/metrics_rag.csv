@@ -1,0 +1,600 @@
+model_key,question_id,dataset_name,reasoning_type,exact_match,token_f1,rouge_l,numeric_accuracy,faithfulness,is_abstention,is_error,latency_seconds,prompt_tokens,completion_tokens,generated_answer,reference_answer,bertscore_f1,semantic_similarity
+qwen2.5-7b,financebench_id_00005,financebench,domain-relevant,0.0,0.19289340101522845,0.15228426395939085,0.0,0.24242424242424243,False,True,1.0656416416168213,843,283,"Based on the provided financial context for Corning Incorporated, **yes, Corning has positive working capital** for FY2022.
+
+**Reasoning and Calculation:**
+
+Working capital is calculated as **Total Current Assets minus Total Current Liabilities**.
+
+From the Consolidated Balance Sheets for December 31, 2022:
+*   **Total Current Assets:** $7,453 million
+*   **Total Current Liabilities:** $5,175 million
+
+**Calculation:**
+$$7,453 \text{ million} - 5,175 \text{ million} = 2,278 \text{ million}$$
+
+Since the result is **$2,278 million** (a positive number), Corning has positive working capital.
+
+**Relevance of the Metric:**
+Working capital is a useful and relevant metric for Corning. It indicates the company's short-term liquidity and its ability to pay off its current liabilities with its current assets. A positive working capital of $2.278 billion suggests that Corning has sufficient liquid assets to cover its short-term obligations, which is a standard indicator of financial health for operating companies. The context provided does not suggest that working capital is irrelevant to Corning's business model; rather, it is a standard component of their balance sheet analysis.",Yes. Corning had a positive working capital amount of $831 million by FY 2022 close. This answer considers only operating current assets and current liabilities that were clearly shown in the balance sheet.,0.0,0.8328437805175781
+qwen2.5-7b,financebench_id_06655,financebench,metrics-generated,0.0,0.0,0.0,0.0,0.17391304347826086,True,True,0.9328548908233644,677,262,"The provided financial context does not contain the necessary data to calculate Amazon's FY2017 Days Payable Outstanding (DPO).
+
+**Reasoning:**
+1.  **Time Period Mismatch:** The provided text explicitly refers to financial data as of **May 31, 2009** (e.g., ""as of may 31 , 2009"", ""fiscal 2010""). It does not contain any financial statements, balance sheet items, or P&L items for **FY2016** or **FY2017**.
+2.  **Missing Line Items:** The calculation for DPO requires the following specific figures, none of which are present in the text:
+    *   Accounts Payable for FY2016 and FY2017 (to calculate the average).
+    *   Cost of Goods Sold (COGS) for FY2017.
+    *   Inventory levels for FY2016 and FY2017 (to calculate the change).
+
+The text only provides information regarding short-term debt obligations, uncertain tax positions, and shelf registration statements as of 2009. Therefore, the answer cannot be determined from the provided context.",93.86,0.0,0.2044946849346161
+qwen2.5-7b,financebench_id_00080,financebench,domain-relevant,0.0,0.07638888888888888,0.05555555555555555,0.0,0.2672413793103448,False,True,1.6415154933929443,917,512,"Based on the provided financial context for PayPal Holdings, Inc. as of December 31, 2022, here is the analysis:
+
+**1. Calculation of Working Capital**
+
+Working Capital is defined as **Current Assets minus Current Liabilities**.
+
+From the Consolidated Balance Sheets for FY2022:
+*   **Total Current Assets:** $57,517 million
+*   **Total Current Liabilities:** $45,101 million
+
+$$ \text{Working Capital} = \$57,517 \text{ million} - \$45,101 \text{ million} = \$12,416 \text{ million} $$
+
+**Conclusion:** Yes, PayPal has **positive working capital** of **$12,416 million** based on FY2022 data.
+
+***
+
+**2. Relevance of Working Capital for PayPal**
+
+While the calculated working capital is positive, it is important to note that **working capital is often considered a less useful or relevant metric for payment processing companies like PayPal** compared to traditional manufacturing or retail firms. Here is why:
+
+*   **Nature of ""Funds Receivable and Customer Accounts"" vs. ""Funds Payable and Amounts Due to Customers"":**
+    *   PayPal’s largest current asset is **""Funds receivable and customer accounts""** ($36,357 million).
+    *   PayPal’s largest current liability is **""Funds payable and amounts due to customers""** ($40,107 million).
+    *   These items represent money held in customer accounts or in transit between customers and merchants. They are not traditional operating assets (like inventory or trade receivables) or operating liabilities (like accounts payable to suppliers).
+    *   Because these balances are driven by customer transaction volumes and timing rather than operational efficiency in managing inventory or payables, they can significantly distort the working capital figure.
+
+*   **Net Customer Funds:**
+    *   In this case, the liability (""Funds payable..."") exceeds the asset (""Funds receivable..."") by approximately $3,750 million ($40,107M - $36,357M). This indicates that PayPal holds more customer funds as a liability than it has in receivables.
+    *   If you exclude these customer-related items, the ""operating"" working capital would be:",Yes. Paypal has a positive working capital of $ 1.6Bn as of FY2022 end.,0.0,0.7564528584480286
+qwen2.5-7b,financebench_id_01244,financebench,domain-relevant,0.0,0.07518796992481203,0.06015037593984963,0.0,0.05357142857142857,True,True,17.256075859069824,545,182,"Based on the provided financial context, it is **not possible to determine** whether CVS Health paid dividends to common shareholders in Q2 of FY2022.
+
+**Reasoning:**
+1.  **Time Period Mismatch:** The provided text explicitly discusses financial data for the years **2008 and 2009** (specifically regarding preferred share dividends reducing net income available to common shareholders). It does not contain any information regarding the fiscal year 2022.
+2.  **Lack of Specific Data:** The text mentions that preferred share dividends reduced net income available to common shareholders in 2008 and 2009, but it does not state whether common dividends were actually paid out in those years, nor does it provide any data for 2022.
+
+Therefore, the answer cannot be determined from the context provided.","Yes, CVS paid a $ 0.55 dividend per share every quarter in FY2022",0.0,0.6743474006652832
+qwen2.5-7b,financebench_id_00790,financebench,domain-relevant,0.0,0.20161290322580644,0.0967741935483871,0.0,0.1568627450980392,True,True,24.31187415122986,662,314,"Based on the provided financial context, it is **not possible to determine** whether CVS Health is a capital-intensive business based on FY2022 data.
+
+**Reasoning:**
+1.  **Missing Capital Expenditure Data:** The definition of a ""capital-intensive"" business typically relies on metrics such as Capital Expenditures (CapEx) relative to sales or total assets, or the ratio of Property, Plant, and Equipment (PP&E) to total assets. The provided text does not contain any figures for Capital Expenditures, PP&E, or Total Assets for FY2022.
+2.  **Irrelevant Data Points:** The context provides data on:
+    *   Consolidated earnings before provision for taxes on income ($21.7 billion in 2022).
+    *   Cost of products sold and Selling, Marketing, and Administrative expenses (qualitative drivers and intangible asset amortization of $4.3 billion).
+    *   A table of liquidity and capital resources for a different entity (implied by the dates 2003–2005 and the specific line items like ""days sales in accounts receivable"") which is not relevant to CVS Health's FY2022 capital intensity.
+3.  **No Proxy Metrics:** While the text mentions ""Commodity inflation"" and ""Supply chain benefits,"" these do not provide the quantitative asset or expenditure data required to assess capital intensity.
+
+Therefore, the answer cannot be determined from the context provided.","Yes, CVS Health requires an extensive asset base to operate, which is evident from its ROA of only 1.82% in 2022 and 3.39% in 2021, though it should be noted that a significant portion of this asset base is goodwill, and CVS's fixed assets/total assets ratio is on the lower side of 5.6%.",0.0,0.5497108697891235
+qwen2.5-7b,ftqa_0024,fintextqa,policy_regulation,0.0,0.19469026548672563,0.12389380530973451,0.0,0.21951219512195122,False,True,4.017854452133179,485,259,"Based on the provided financial context, here are the key points you should take note of when making a fund transfer:
+
+1.  **Exercise Caution to Avoid Errors**: You should be careful when making fund transfers to avoid mistakes. The context explicitly states that customers should be reminded to ""be careful and avoid errors when making fund transfers.""
+2.  **Potential Criminal Liability**: If you receive funds that were mis-transferred to you, you may face **criminal liability** if you do not return them. The text emphasizes that customers should be reminded of this possible criminal liability.
+3.  **Obligation to Return Mis-transferred Funds**: If you have received funds that were erroneously transferred to you, you are expected to return them through the banks.
+4.  **Information Sharing for Resolution**: If a mis-transfer occurs, the Transferor’s Institution will request relevant information (such as the date/time, amount, and account details) and obtain your consent to share this information with the Transferee’s Institution, the Transferee, and the Hong Kong Police Force to handle the case.
+
+In summary, the primary takeaways are to **be careful to prevent errors** and to understand that **keeping mis-transferred funds can lead to criminal charges**.","When making a fund transfer, a bank customer or SVF user should take great care and verify the accuracy of the inputted transferee’s account number and amount of funds to avoid mis-transfer of funds.",0.0,0.5128981471061707
+qwen2.5-7b,ftqa_0006,fintextqa,policy_regulation,0.0,0.15204678362573099,0.08187134502923978,0.0,0.1276595744680851,False,True,28.83623695373535,515,116,"Based on the provided financial context, it is **not possible** to determine what Money Laundering & Terrorist Financing (ML/TF) is or its relevance to ""me.""
+
+The provided text strictly defines ""Purchase of an asset"" by a member bank from an affiliate and details Goldman Sachs Group, Inc.'s commercial lending commitments, including specific credit loss protection arrangements with Sumitomo Mitsui Financial Group, Inc. (SMFG). There is no mention of Money Laundering, Terrorist Financing, or any related regulatory or compliance concepts in the context.","As an international financial centre, Hong Kong attaches great importance to safeguarding the integrity of its financial systems by implementing Anti-Money Laundering and Counter-Financing of Terrorism (AML/CFT) regime which meets international standards. The banking sector, as a gatekeeper of the financial system, plays an important role in that regime.  The HKMA has developed relevant policies and provided guidance to banks in establishing AML/CFT Systems, which includes preventive measures such as customer due diligence (CDD), transaction monitoring and record keeping, for identifying and appropriately mitigating ML/TF risks. When conducting CDD, banks collect information/documents from customers and reliable sources at account opening and on periodic basis thereafter to identify and verify their customers and develop an understanding of normal and expected banking activities of individual customers for ongoing monitoring of any abuse of banking services or illicit fund flows. Customers can contribute to the efforts in the fight against crime by providing accurate and up-to-date information upon request by banks. Such cooperation will not only help banks in meeting their legal and regulatory obligations and safeguarding the integrity of the financial system in Hong Kong, but also help protect bank customers from becoming the victims of fraud and other criminal activities. Banks adopt a risk-based approach in conducting AML/CFT work, which recognises that risks of different customers and different banking services are different, and thus CDD and risk mitigating measures adopted by banks should be proportionate to the risk level and not to bring undue burden on the customers. More information can be found on the FAQs Section about Account Opening and Operation.",0.0,0.4697689414024353
+qwen2.5-7b,ftqa_0093,fintextqa,policy_regulation,0.0,0.2819383259911894,0.15859030837004406,0.0,0.3835616438356164,False,True,0.9569222927093506,704,306,"Based on the provided financial context, the answer is **No**, the portfolio company would not trigger the presumption of affiliation under section 223.2(a)(9)(i).
+
+**Reasoning:**
+
+1.  **Threshold Requirement:** The context explicitly states that section 223.2(a)(9)(i) applies to any company in which a holding company of the member bank owns or controls, directly or indirectly, **15 percent or more** of the equity capital pursuant to section 4(k)(4)(H) or (I) of the Bank Holding Company Act.
+2.  **Application to Facts:** In the scenario provided, the holding company controls only **12 percent** of the equity capital and voting stock under the merchant banking or insurance company investment authority (section 4(k)(4)(H) or (I)).
+3.  **Conclusion:** Since 12 percent is less than the required 15 percent threshold specified in the text for section 223.2(a)(9)(i), the presumption of affiliation under that specific subsection is not triggered.
+
+*(Note: The additional 4 percent held under section 4(c)(6) is not aggregated with the 12 percent for the purpose of meeting the 15% threshold in section 223.2(a)(9)(i), as that section specifically references ownership ""pursuant to section 4(k)(4)(H) or (I)"".)*","Yes, since a bank holding company may not own any shares of a company in reliance on section 4(c)(6) of the BHC Act if it owns or controls, in the aggregate under a combination of authorities, more than 5 percent of any class of voting securities of the company.",0.0,0.6439518332481384
+qwen2.5-7b,ftqa_0109,fintextqa,policy_regulation,0.0,0.0,0.0,0.0,0.05555555555555555,True,True,11.206267595291138,585,236,"Based on the provided financial context, the answer **cannot be determined**.
+
+**Reasoning:**
+The provided text contains excerpts from regulations regarding:
+1.  **Agency transactions:** Specifically, when an extension of credit to a non-affiliate is *not* treated as an extension of credit to an affiliate (paragraph (b)(1)(i)).
+2.  **Low-quality assets:** Prohibitions on purchasing low-quality assets from affiliates unless the bank committed to the purchase prior to the affiliate's acquisition (paragraph (a) and (b) regarding renewals).
+3.  **General affiliate transactions:** A statement that a member bank must treat transactions as affiliate transactions if proceeds are used for the benefit of or transferred to an affiliate (paragraph (a) under the second section).
+
+However, the specific scenario described in the question—**purchasing an asset from an affiliate while retaining recourse to that affiliate**—is not addressed in the provided text. The text does not define how ""recourse"" affects the classification of a purchase transaction as an ""extension of credit."" Therefore, based strictly on the provided context, this specific determination cannot be made.",Yes.,0.0,-0.04575975611805916
+qwen2.5-7b,ftqa_0104,fintextqa,policy_regulation,0.0,0.010309278350515464,0.010309278350515464,0.0,0.4,False,True,26.421266317367557,595,254,"Based on the provided financial context, **yes**, this would generate an extension of credit by the bank to the affiliate.
+
+**Reasoning:**
+
+1.  **Definition of Extension of Credit:** The context explicitly defines ""Extension of credit"" to an affiliate as ""the making or renewal of a loan, the granting of a line of credit, or the **extending of credit in any manner whatsoever**, including on an intraday basis, to an affiliate.""
+2.  **Application to the Scenario:** If an affiliate purchases assets from a member bank but pays for them at a later date, the bank is effectively allowing the affiliate to defer payment. This deferral constitutes ""extending of credit in any manner whatsoever.""
+3.  **Inclusion of Advances:** The definition further states that an extension of credit includes, ""without limitation... (1) An advance to an affiliate by means of an overdraft, cash item, or **otherwise**."" The ability to purchase now and pay later is an advance of value (the asset) without immediate settlement, fitting the broad definition provided.
+
+Therefore, under the strict definition provided in the text, allowing an affiliate to pay for purchased assets at a later date is treated as an extension of credit.",Yes.,0.0,0.05517997220158577
+qwen2.5-7b,AWK/2017/page_148.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.2571428571428571,False,True,2.680053234100342,577,269,"To determine the percentage decrease in average borrowings from 2016 to 2017, we use the figures provided in the table:
+
+*   **2016 Average Borrowings:** $850
+*   **2017 Average Borrowings:** $779
+
+**Step 1: Calculate the absolute decrease**
+$$ \text{Decrease} = 850 - 779 = 71 $$
+
+**Step 2: Calculate the percentage decrease relative to the 2016 base**
+$$ \text{Percentage Decrease} = \left( \frac{\text{Decrease}}{\text{2016 Average Borrowings}} \right) \times 100 $$
+$$ \text{Percentage Decrease} = \left( \frac{71}{850} \right) \times 100 $$
+$$ \text{Percentage Decrease} \approx 0.083529 \times 100 $$
+$$ \text{Percentage Decrease} \approx 8.35\% $$
+
+**Answer:**
+Average borrowings decreased by approximately **8.35%** from 2016 to 2017.",-0.08353,0.0,0.11676172912120819
+qwen2.5-7b,IP/2006/page_38.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.30158730158730157,False,True,14.02600073814392,747,187,"Based on the financial context provided, it is **not possible** to determine the answer for the year **2007**.
+
+**Reasoning:**
+1.  The provided text contains a table of contractual obligations, but the column headers are explicitly labeled **""2014""** (repeated five times, likely representing different time buckets such as ""Less than 1 year,"" ""1-3 years,"" etc., or simply a formatting error in the source text).
+2.  The footnotes reference dates in **2017** (e.g., ""as of may 28 , 2017"").
+3.  There is no data, table, or text in the provided context that references the year **2007**.
+
+Therefore, the percentage of total debt compared to lease obligations and purchase obligations for 2007 cannot be calculated from the given information.",0.21864,0.0,0.06550844013690948
+qwen2.5-7b,AMT/2006/page_104.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.2909090909090909,True,True,24.395049571990967,670,199,"Based on the provided financial context, the answer **cannot be determined**.
+
+**Reasoning:**
+1.  **Time Period Mismatch:** The provided text exclusively contains financial data for the years **2016, 2017, and 2018**. It does not contain any information regarding the year **2006**.
+2.  **Specific Data Missing:** Even within the provided years, the text mentions the total long-term debt balance at year-end 2018 ($9,347 million) and year-end 2017 ($8,238 million), but it does not provide a breakdown of debt maturities (i.e., the specific portion of long-term debt due in a specific year like 2006 or 2018).
+
+Therefore, the total cash obligations aggregate carrying value of long-term debt due in 2006 is not available in the given context.",0.09562,0.0,0.09320396929979324
+qwen2.5-7b,LMT/2014/page_77.pdf-2,finqa,numerical_reasoning,0.0,0.02380952380952381,0.02380952380952381,0.0,0.5862068965517241,False,True,0.8805062770843506,556,192,"To determine the change in the weighted average common shares outstanding for diluted computations from 2013 to 2014, we extract the relevant figures from the provided table:
+
+1.  **2014 Weighted average common shares outstanding for diluted computations:** 322.4 million
+2.  **2013 Weighted average common shares outstanding for diluted computations:** 326.5 million
+
+Now, we calculate the change:
+$$ \text{Change} = \text{2014 Value} - \text{2013 Value} $$
+$$ \text{Change} = 322.4 - 326.5 $$
+$$ \text{Change} = -4.1 $$
+
+The weighted average common shares outstanding for diluted computations decreased by **4.1 million** from 2013 to 2014.",-4.1,0.0,0.15042763948440552
+qwen2.5-7b,UNP/2010/page_21.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.18181818181818182,False,True,21.271403789520264,625,160,"Based on the financial context provided, it is **not possible** to determine how much more was spent on shares in November 2010 than in December 2010.
+
+**Reasoning:**
+1.  The provided text and table contain data exclusively for the **three months ended December 31, 2012** (specifically October 2012, November 2012, and December 2012).
+2.  There is no financial data, share purchase information, or expenditure figures provided for the year **2010** in the context.
+3.  Therefore, the specific figures for November 2010 and December 2010 are missing, making the calculation impossible.",3462694.66,0.0,0.06390748172998428
+llama3.1-8b,financebench_id_00005,financebench,domain-relevant,0.0,0.2451612903225807,0.11612903225806452,0.0,0.15942028985507245,False,True,1.2090435028076172,741,319,"**Working‑capital calculation (FY 2022)**  
+
+| Item | FY 2022 (in $ million) |
+|------|------------------------|
+| **Current assets** | 7,453 |
+| **Current liabilities** | 5,175 |
+| **Working capital** = Current assets – Current liabilities | **7,453 – 5,175 = 2,278** |
+
+**Result:** Corning reported **$2.278 billion of positive working capital** at 31 December 2022.
+
+---
+
+### Is working capital a useful metric for Corning?
+
+Yes. Corning is a diversified industrial/technology company that manufactures glass, ceramics and related products. Its operations involve sizable inventories, trade receivables, and trade payables—all components of operating working capital (as described in the excerpt). For such a capital‑intensive, inventory‑heavy business, the ability to fund day‑to‑day operations without relying on external financing is an important indicator of short‑term financial health. Therefore, working capital is a relevant and informative metric for assessing Corning’s liquidity and operational efficiency.",Yes. Corning had a positive working capital amount of $831 million by FY 2022 close. This answer considers only operating current assets and current liabilities that were clearly shown in the balance sheet.,0.0,0.717411994934082
+llama3.1-8b,financebench_id_06655,financebench,metrics-generated,0.0,0.0,0.0,0.0,0.18181818181818182,False,True,1.016554355621338,681,221,"I’m sorry, but the information you provided does not contain any of the data needed to calculate Amazon’s FY 2017 Days Payable Outstanding. Specifically, the excerpt includes:
+
+* Details about short‑term debt, notes payable, letters of credit, and uncertain tax positions for a company that is not identified as Amazon.
+* No figures for Amazon’s FY 2016 or FY 2017 **accounts payable**, **cost of goods sold (COGS)**, or **inventory balances**.
+
+Because the required line‑item values (average accounts payable, FY 2017 COGS, and the change in inventory between FY 2016 and FY 2017) are missing, the DPO cannot be computed from the supplied context.",93.86,0.0,0.18952509760856628
+llama3.1-8b,financebench_id_00080,financebench,domain-relevant,0.0,0.06722689075630252,0.05042016806722689,0.0,0.17355371900826447,False,True,1.6805081367492676,762,512,"**Working‑capital calculation (FY 2022)**  
+
+| Item | FY 2022 (in $ millions) |
+|------|------------------------|
+| **Current assets** | 57,517 |
+| **Current liabilities** | 45,101 |
+| **Working capital** = Current assets – Current liabilities | **57,517 – 45,101 = 12,416** |
+
+**Result:** PayPal reported **$12.4 billion of positive working capital** at 31 December 2022.
+
+---
+
+### Is working capital a useful metric for PayPal?
+
+Working capital (the net of current assets and current liabilities) is a basic liquidity indicator that tells whether a firm can meet its short‑term obligations with its short‑term resources. For many operating companies this is a key measure of operational health.
+
+For PayPal, however, the metric has limited interpretive power for a few reasons:
+
+| Reason | Explanation |
+|--------|-------------|
+| **Large cash & short‑term investments** | PayPal’s current assets are dominated by cash & cash equivalents ($7.8 bn) and short‑term investments ($3.1 bn). These are highly liquid and not tied to day‑to‑day operating cycles, so the “working‑capital” figure is inflated by cash that could be used for strategic purposes (share repurchases, acquisitions, etc.) rather than just covering operating needs. |
+| **Nature of the business** | PayPal is a payments‑processing platform. Its core operating cycle involves moving funds between customers, merchants, and banks rather than holding inventory or long production cycles. Traditional working‑capital components (inventory, accounts payable/receivable) are less material; the most significant current‑liability line is “Funds payable and amounts due to customers” ($40.1 bn), which reflects funds that PayPal must return to users, not supplier credit. |
+| **Regulatory",Yes. Paypal has a positive working capital of $ 1.6Bn as of FY2022 end.,0.0,0.5838860273361206
+llama3.1-8b,financebench_id_01244,financebench,domain-relevant,0.0,0.18181818181818185,0.15584415584415584,0.0,0.12195121951219512,True,True,1.0343167781829834,570,180,"Based on the financial context provided, there is no information about CVS Health’s dividend payments in Q2 of FY 2022—or even a mention of CVS Health at all. The excerpt only discusses preferred‑share dividend accruals for 2008 and 2009 and their effect on earnings per share. Consequently, we cannot determine from this material whether CVS Health paid dividends to common shareholders in Q2 FY 2022.","Yes, CVS paid a $ 0.55 dividend per share every quarter in FY2022",0.0,0.7122061848640442
+llama3.1-8b,financebench_id_00790,financebench,domain-relevant,0.0,0.1517857142857143,0.08928571428571429,0.0,0.1368421052631579,False,True,1.7123527526855469,633,512,"Based on the information supplied, we cannot definitively label CVS Health as “capital‑intensive” for FY 2022.
+
+**Why the data are insufficient**
+
+| Metric shown in the excerpt | FY 2022 value (if given) | Relevance to “capital‑intensive” assessment |
+|-----------------------------|--------------------------|---------------------------------------------|
+| Consolidated earnings before provision for taxes on income | $21.7 billion (22.9 % of sales) | Indicates profitability but not the size of the asset base or capital spending. |
+| Intangible‑asset amortization (included in cost of products sold) | $4.3 billion | Shows a non‑cash expense, but without total assets, depreciation, or CAPEX we cannot gauge the capital intensity of the business. |
+| Cash, receivables, inventory, working‑capital figures | Only historic data from 2003‑2005 (e.g., cash $8.3 billion in 2005) | Not comparable to FY 2022; no FY 2022 balance‑sheet numbers are provided. |
+| No disclosed FY 2022 capital expenditures, property‑plant‑equipment (PP&E), or total assets | – | These are the primary figures used to judge capital intensity (e.g., CAPEX‑to‑sales, PP&E‑to‑sales, depreciation‑to‑sales ratios). |
+
+**Conclusion**
+
+Because the FY 2022 excerpt does not include:
+
+* Total assets or PP&E balances,
+* Capital‑expenditure (CAPEX) amounts,
+* Depreciation or amortization (beyond the intangible‑asset amortization figure),
+*","Yes, CVS Health requires an extensive asset base to operate, which is evident from its ROA of only 1.82% in 2022 and 3.39% in 2021, though it should be noted that a significant portion of this asset base is goodwill, and CVS's fixed assets/total assets ratio is on the lower side of 5.6%.",0.0,0.5353603363037109
+llama3.1-8b,ftqa_0024,fintextqa,policy_regulation,0.0,0.15709969788519637,0.09667673716012085,0.0,0.05,False,True,1.7293941974639893,531,512,"**Key points to keep in mind when you make a fund transfer**
+
+1. **Verify all transfer details before you submit**  
+   - Double‑check the **recipient’s bank account number (or FPS identifier such as mobile phone number or e‑mail address)**, the **transaction amount**, and the **date/time** you intend to send the money.  
+   - The guidance stresses that customers should be “careful and avoid errors when making fund transfers” (first paragraph).
+
+2. **Use the correct channel and follow the institution’s procedures**  
+   - Follow the bank’s or SVF licence holder’s prescribed steps (online, mobile app, branch form, etc.).  
+   - The institution may provide **hard‑copy or electronic forms** to help you report any mistake, so keep those handy.
+
+3. **Be aware of the consequences of a mis‑transfer**  
+   - If you accidentally send money to the wrong account, the **transferee may be criminally liable** if they keep the funds. The context states that “the transferee should also be reminded that they may be criminally liable if the mis‑transferred funds are not returned.”  
+   - Promptly contact your bank (the **Transferor’s Institution**) to report the error and provide the required information (date/time, amount, your account, the recipient’s identifier).
+
+4. **Keep supporting documentation**  
+   - Retain **bank statements, transaction records, and any confirmation messages** that show the details of the transfer. These will be needed if a dispute arises or if the bank requests proof for investigation.
+
+5. **Know the reporting process**  
+   - When you report a mis‑transfer, the bank will ask you to **consent to share the relevant information** with the transferee’s bank and, if necessary, the Hong Kong Police Force. Be prepared to provide the information listed in the guidance (date/time, amount, your account, recipient’s account/identifier).
+
+6. **Act quickly if you suspect an error**  
+   - Early notification helps the Transferor’s Institution obtain the necessary details and coordinate with the Transferee’s Institution to recover the","When making a fund transfer, a bank customer or SVF user should take great care and verify the accuracy of the inputted transferee’s account number and amount of funds to avoid mis-transfer of funds.",0.0,0.741771936416626
+llama3.1-8b,ftqa_0006,fintextqa,policy_regulation,0.0,0.1081081081081081,0.06081081081081081,0.0,0.045454545454545456,True,True,0.9995162487030028,546,161,"I’m sorry, but the financial context you provided does not contain any information about Money Laundering & Terrorist Financing (ML/TF) or its relevance to you. Therefore, I cannot answer the question based on the given material.","As an international financial centre, Hong Kong attaches great importance to safeguarding the integrity of its financial systems by implementing Anti-Money Laundering and Counter-Financing of Terrorism (AML/CFT) regime which meets international standards. The banking sector, as a gatekeeper of the financial system, plays an important role in that regime.  The HKMA has developed relevant policies and provided guidance to banks in establishing AML/CFT Systems, which includes preventive measures such as customer due diligence (CDD), transaction monitoring and record keeping, for identifying and appropriately mitigating ML/TF risks. When conducting CDD, banks collect information/documents from customers and reliable sources at account opening and on periodic basis thereafter to identify and verify their customers and develop an understanding of normal and expected banking activities of individual customers for ongoing monitoring of any abuse of banking services or illicit fund flows. Customers can contribute to the efforts in the fight against crime by providing accurate and up-to-date information upon request by banks. Such cooperation will not only help banks in meeting their legal and regulatory obligations and safeguarding the integrity of the financial system in Hong Kong, but also help protect bank customers from becoming the victims of fraud and other criminal activities. Banks adopt a risk-based approach in conducting AML/CFT work, which recognises that risks of different customers and different banking services are different, and thus CDD and risk mitigating measures adopted by banks should be proportionate to the risk level and not to bring undue burden on the customers. More information can be found on the FAQs Section about Account Opening and Operation.",0.0,0.46183693408966064
+llama3.1-8b,ftqa_0093,fintextqa,policy_regulation,0.0,0.4137931034482758,0.22413793103448276,0.0,0.5348837209302325,False,True,1.7268280982971191,729,512,"**Answer: No – the portfolio company would not trigger the presumption of affiliation in § 223.2(a)(9)(i) of Regulation W.**
+
+**Reasoning**
+
+1. **Regulation W definition (excerpt provided)**  
+   > “(9) Companies held under merchant‑banking or insurance‑company investment authority—(i) **In general. Any company in which a holding company of the member bank owns or controls, directly or indirectly, … 15 percent or more of the equity capital** pursuant to section 4(k)(4)(H","Yes, since a bank holding company may not own any shares of a company in reliance on section 4(c)(6) of the BHC Act if it owns or controls, in the aggregate under a combination of authorities, more than 5 percent of any class of voting securities of the company.",0.0,0.6341994404792786
+llama3.1-8b,ftqa_0109,fintextqa,policy_regulation,0.0,0.02631578947368421,0.02631578947368421,0.0,0.17142857142857143,False,True,1.7248101234436035,631,512,"**Answer**
+
+Yes. Under the rules quoted, a purchase of a loan (or any other asset) from an affiliate that is made with **recourse to the affiliate** is treated as an **extension of credit by the member bank to that affiliate**.
+
+**Why the rules lead to that conclusion**
+
+1. **“Transaction with an affiliate” test** – Paragraph (a) states:  
+
+   > “A member bank must treat any of its transactions with any person as a transaction with an affiliate **",Yes.,0.0,0.0857727974653244
+llama3.1-8b,ftqa_0104,fintextqa,policy_regulation,0.0,0.0111731843575419,0.0111731843575419,0.0,0.4626865671641791,False,True,1.69262957572937,640,512,"**Answer: Yes – the deferred‑payment purchase would be treated as an “extension of credit” from the member bank to the affiliate.**
+
+**Reasoning**
+
+1. **Definition of “extension of credit”** – The excerpt states:
+
+   > “Extension of credit” to an affiliate means the making or renewal of a loan, the granting of a line of credit, or the extending of credit in any manner whatsoever, including on an intraday basis, to an affiliate. An extension of credit to an affiliate includes, without limitation:  
+   > (1) An advance to an affiliate by means of an overdraft, cash item, or otherwise.
+
+   A purchase of assets where payment is postponed is precisely an “advance … by means of … otherwise” – i.e., the bank is allowing the affiliate to obtain the assets now and pay later. That is a credit transaction, even though it is not labeled a loan.
+
+2. **Application to the scenario** – When the affiliate buys assets from the bank and agrees to pay at a later date, the bank is providing the affiliate with funds (or the asset itself) that the",Yes.,0.0,0.04037941247224808
+llama3.1-8b,AWK/2017/page_148.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.36363636363636365,False,True,8.294623136520386,593,186,"The table shows:
+
+- **Average borrowings 2016:** $850 million  
+- **Average borrowings 2017:** $779 million  
+
+**Decrease in absolute terms**  
+\(850 - 779 = 71\) million
+
+**Percentage decrease**  
+
+\[
+\frac{71}{850}\times 100 = 8.3529\% \approx 8.35\%
+\]
+
+**Answer:** Average borrowings fell by **about 8.35 %** from 2016 to 2017.",-0.08353,0.0,0.15399205684661865
+llama3.1-8b,IP/2006/page_38.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.45454545454545453,True,True,6.371974468231201,707,185,"The excerpt you provided only contains figures for the year 2014 (operating leases, capital leases, purchase obligations, total contractual obligations, etc.). No data for 2007 are included, and there is no breakdown of “total debt” versus lease and purchase obligations for that year.
+
+**Therefore, the percentage of total debt relative to lease obligations and purchase obligations in 2007 cannot be determined from the information given.**",0.21864,0.0,0.06600361317396164
+llama3.1-8b,AMT/2006/page_104.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.2558139534883721,True,True,6.377472400665283,650,216,"The provided excerpt contains data only for the years 2016‑2018 (loan collections, outstanding loan balances, equity‑method cash outflows, debt issuances, share repurchases, and long‑term‑debt metrics for 2018). It does not include any figures for the year 2006, nor does it give a breakdown of long‑term‑debt maturities or carrying values for that year.
+
+**Therefore, the total cash‑obligations aggregate carrying value of long‑term debt due in 2006 cannot be determined from the information supplied.**",0.09562,0.0,0.11442883312702179
+llama3.1-8b,LMT/2014/page_77.pdf-2,finqa,numerical_reasoning,0.0,0.046511627906976744,0.046511627906976744,0.0,0.6842105263157895,False,True,5.164268493652344,569,190,"The weighted‑average common shares outstanding for **diluted** earnings per share were:
+
+- **2013:** 326.5 million  
+- **2014:** 322.4 million  
+
+**Change (2014 – 2013) = 322.4 – 326.5 = –4.1 million**
+
+So, the diluted weighted‑average common shares outstanding **decreased by 4.1 million shares** from 2013 to 2014.",-4.1,0.0,0.13313443958759308
+llama3.1-8b,UNP/2010/page_21.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.3902439024390244,True,True,4.9882402420043945,608,177,"The financial excerpt provides share‑repurchase data only for the fourth quarter of **2012** (October, November and December 2012). It lists the number of shares purchased and the average price per share for each month, but there is no information about any repurchases in **November 2010** or **December 2010**.
+
+Because the required 2010 figures are not present in the provided context, the amount spent on shares in November 2010 versus December 2010 cannot be determined from the given information.",3462694.66,0.0,0.036354370415210724
+mistral-7b,financebench_id_00005,financebench,domain-relevant,0.0,0.09565217391304348,0.05217391304347826,0.0,0.16071428571428573,True,True,0.6742656230926514,1026,512,"Based on the provided financial context for FY2022, we cannot determine Corning's operating working capital as it is not explicitly mentioned. However, we can analyze the total working capital and provide insights on that.
+
+Total assets for FY2022: $30,279 million
+Total liabilities for FY2022: $24,200 million
+
+To calculate total working capital:
+Total working capital = Total assets - Total liabilities
+Total working capital = $30,279 million - $24,200 million
+Total working capital = $6,079 million
+
+Now, let's analyze the components of total working capital:
+
+1. Trade receivables (net of allowance for doubtful accounts):
+Trade receivables in FY2022: $1,999 million
+Trade receivables in FY2021: $1,999 million (same as FY2022)
+Allowance for doubtful accounts in FY2022: $1,000 million
+Allowance for doubtful accounts in FY2021: $900 million (same as FY2022)
+
+Net trade receivables = Trade receivables - Allowance for doubtful accounts
+Net trade receivables = ($1,999 million - $1,000 million) = $999 million
+
+2. Inventories (first-in, first-out method):
+Inventories in FY2022: $4,000 million
+Inventories in FY2021: $3,900 million (same as FY2022)
+
+Net inventories = Inventories - Inventories (FIFO method)
+Net inventories = ($4,000 million - $3,900 million) = $100 million
+
+3. Accounts payable:
+Accounts payable in FY2022: $2,900 million
+Accounts payable in FY2021: $2,800 million (same as FY2022)
+
+Net accounts payable = Accounts payable - Accounts pay",Yes. Corning had a positive working capital amount of $831 million by FY 2022 close. This answer considers only operating current assets and current liabilities that were clearly shown in the balance sheet.,0.0,0.6667813062667847
+mistral-7b,financebench_id_06655,financebench,metrics-generated,0.0,0.0,0.0,0.0,0.17142857142857143,False,True,0.4460771083831787,717,154,"To calculate Amazon's FY2017 days payable outstanding (DPO), we need to find the average accounts payable between FY2016 and FY2017, the cost of goods sold (COGS) for FY2017, and the change in inventory between FY2016 and FY2017. Unfortunately, the provided context does not include the necessary financial figures for these calculations. Please provide the required financial data for FY2016, FY2017 COGS, and the change in inventory between FY2016 and FY2017. Once we have these figures, we can proceed with the calculation.",93.86,0.0,0.22634895145893097
+mistral-7b,financebench_id_00080,financebench,domain-relevant,0.0,0.07531380753138076,0.06694560669456066,0.0,0.2857142857142857,True,True,0.6152694225311279,1031,417,"Based on the provided financial context for PayPal Holdings, Inc. as of December 31, 2022, we can calculate the change in working capital from 2021 to 2022. However, we do not have the exact figures for 2021 and 2020 to directly compare the change in working capital. Therefore, we cannot definitively determine PayPal's working capital position for FY2022 based solely on the provided context.
+
+To calculate working capital, we would need the figures for 2021 and 2020 to compare the change in the current assets and current liabilities. Without this information, we cannot determine if PayPal has a positive working capital position in FY2022. 
+
+If we had the figures for 2021 and 2020, we could calculate working capital as follows:
+
+Working capital = Current assets - Current liabilities
+
+Current assets:
+Assuming the total current assets for 2021 and 2020 are $X and $Y, respectively, and the total current liabilities for 2021 and 2020 are $Z and $W, respectively, then the change in working capital from 2021 to 2022 would be:
+
+Change in working capital = (Current assets in 2022 - Current assets in 2021) - (Current liabilities in 2022 - Current liabilities in 2021)
+
+Since we don't have the exact figures for 2021 and 2020, we cannot calculate the change in working capital for FY2022. To determine PayPal's working capital position in FY2022, we would need the figures for 2021 and 2020.",Yes. Paypal has a positive working capital of $ 1.6Bn as of FY2022 end.,0.0,0.6116094589233398
+mistral-7b,financebench_id_01244,financebench,domain-relevant,0.0,0.05555555555555555,0.046296296296296294,0.0,0.07407407407407407,True,True,0.5223672389984131,579,342,"Based on the provided financial context, we cannot determine the exact dividend amount paid to common shareholders in Q2 of FY2022. However, we can analyze the information given for Q2 of FY2021 and Q2 of FY2020 to understand the company's dividend history.
+
+For Q2 of FY2021, the context states that the preferred shares paid cumulative quarterly dividends at a rate of 5% (5%) per year. In Q2 of FY2021, the accrual of dividends on the preferred shares reduced net income available to common shareholders by $18 million.
+
+For Q2 of FY2020, the context states that the preferred shares paid cumulative quarterly dividends at a rate of 5% (5%) per year. In Q2 of FY2020, the accrual of dividends on the preferred shares reduced net income available to common shareholders by $46 million.
+
+Since the preferred shares paid dividends in both Q2 of FY2021 and FY2020, it is reasonable to assume that they paid dividends in Q2 of FY2022 as well. However, without specific figures for Q2 of FY2022, we cannot provide an exact amount. 
+
+To determine the dividend amount for Q2 of FY2022, we would need more information about the dividend rate and the net income available to common shareholders in Q2 of FY2022.","Yes, CVS paid a $ 0.55 dividend per share every quarter in FY2022",0.0,0.5726883411407471
+mistral-7b,financebench_id_00790,financebench,domain-relevant,0.0,0.16346153846153846,0.10576923076923077,0.0,0.058823529411764705,False,True,0.591975212097168,711,342,"Based on the provided financial context for FY2022, we can analyze the capital intensity of CVS Health by examining its working capital components. Working capital is calculated as follows:
+
+Working Capital = (Accounts Receivable Net + Inventory - Accounts Payable Outstanding)
+
+Let's calculate working capital for FY2022:
+
+FY2022 Working Capital = (895 + 165 - 62) = $1,095 million
+
+Now, let's compare the FY2022 working capital to the FY2022 revenue:
+
+FY2022 Revenue = $219.9 billion (from the provided context)
+
+Working Capital to Revenue Ratio = (FY2022 Working Capital / FY2022 Revenue)
+
+Working Capital to Revenue Ratio = (1,095 / 219.9 billion) = 0.0499
+
+To convert the ratio to a percentage, we multiply by 100:
+
+Working Capital to Revenue Ratio (in percentage) = 0.0499 * 100 = 4.99%
+
+Based on the calculated working capital to revenue ratio of 4.99% for FY2022, we can conclude that CVS Health is not a capital-intensive business. The ratio is relatively low, indicating that the company has a moderate level of working capital relative to its revenue.","Yes, CVS Health requires an extensive asset base to operate, which is evident from its ROA of only 1.82% in 2022 and 3.39% in 2021, though it should be noted that a significant portion of this asset base is goodwill, and CVS's fixed assets/total assets ratio is on the lower side of 5.6%.",0.0,0.4831124544143677
+mistral-7b,ftqa_0024,fintextqa,policy_regulation,0.0,0.22429906542056074,0.1588785046728972,0.0,0.1375,False,True,4.634922504425049,538,261,"Based on the provided financial context, when making a fund transaction, you should take note of the following points:
+
+1. Be cautious of potential errors or mis-transfers: The context emphasizes the importance of customers being careful while making fund transactions to avoid errors or mis-transfers.
+
+2. Return mis-transmitted funds: If you receive funds that were mis-transmitted to you, you should promptly return the funds to the rightful owner. Failure to do so may result in criminal liability.
+
+3. Provide necessary information to your bank: If you discover a mis-transmission, report the case to your bank or the SVF licensee (if applicable). Your bank should request you to provide relevant information to facilitate the handling of the mis-transmission, such as:
+   - Date and time of the mis-transmission
+   - Amount of the transaction involved
+   - Your bank account involved
+   - The bank account (or relevant identifiers like mobile phone number or email address) to which the funds have been erroneously sent (if applicable for FPS transactions)
+
+By providing this information, you can help the relevant parties to identify the correct recipient and resolve the issue efficiently.","When making a fund transfer, a bank customer or SVF user should take great care and verify the accuracy of the inputted transferee’s account number and amount of funds to avoid mis-transfer of funds.",0.0,0.6764498949050903
+mistral-7b,ftqa_0006,fintextqa,policy_regulation,0.0,0.037037037037037035,0.022222222222222223,0.0,0.14285714285714285,False,True,7.954954385757446,549,512,"Based on the provided financial context, Money Laundering &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp","As an international financial centre, Hong Kong attaches great importance to safeguarding the integrity of its financial systems by implementing Anti-Money Laundering and Counter-Financing of Terrorism (AML/CFT) regime which meets international standards. The banking sector, as a gatekeeper of the financial system, plays an important role in that regime.  The HKMA has developed relevant policies and provided guidance to banks in establishing AML/CFT Systems, which includes preventive measures such as customer due diligence (CDD), transaction monitoring and record keeping, for identifying and appropriately mitigating ML/TF risks. When conducting CDD, banks collect information/documents from customers and reliable sources at account opening and on periodic basis thereafter to identify and verify their customers and develop an understanding of normal and expected banking activities of individual customers for ongoing monitoring of any abuse of banking services or illicit fund flows. Customers can contribute to the efforts in the fight against crime by providing accurate and up-to-date information upon request by banks. Such cooperation will not only help banks in meeting their legal and regulatory obligations and safeguarding the integrity of the financial system in Hong Kong, but also help protect bank customers from becoming the victims of fraud and other criminal activities. Banks adopt a risk-based approach in conducting AML/CFT work, which recognises that risks of different customers and different banking services are different, and thus CDD and risk mitigating measures adopted by banks should be proportionate to the risk level and not to bring undue burden on the customers. More information can be found on the FAQs Section about Account Opening and Operation.",0.0,0.22955988347530365
+mistral-7b,ftqa_0093,fintextqa,policy_regulation,0.0,0.2121212121212121,0.15151515151515152,0.0,0.3384615384615385,False,True,11.902984380722046,749,376,"Based on the provided financial context, we can analyze the situation as follows:
+
+1. Section 223.2(a)(9)(i) of Regulation W defines the presumption of affiliation:
+   - The holding company of the member bank controls 10% or more of the equity capital and voting stock of the subsidiary.
+
+2. Section 4(k)(4)(H) and (I) of the Bank Holding Company Act (BHC Act) pertains to merchant banking or insurance company investment authority:
+   - The holding company of the member bank controls 12% of the equity capital and voting stock of the portfolio company.
+
+3. Section 4(c)(6) of the BHC Act pertains to investments in foreign companies:
+   - The holding company of the member bank controls 4% of the equity capital and voting stock of the portfolio company.
+
+Now, let's analyze the situation:
+
+The holding company of the member bank controls 12% (from 4(k)(4)(H) and (I)) and 4% (from 4(c)(6)) of the equity capital and voting stock of the portfolio company.
+
+To determine if the presumption of affiliation applies, we need to compare these percentages to the 10% threshold mentioned in the Regulation W definition.
+
+12% (from 4(k)(4)(H) and (I)) + 4% (from 4(c)(6)) = 16%
+
+Since 16% is greater than the 10% threshold mentioned in Regulation W, the presumption of affiliation would apply, and the subsidiary would be considered affiliated with the member bank.","Yes, since a bank holding company may not own any shares of a company in reliance on section 4(c)(6) of the BHC Act if it owns or controls, in the aggregate under a combination of authorities, more than 5 percent of any class of voting securities of the company.",0.0,0.7536850571632385
+mistral-7b,ftqa_0109,fintextqa,policy_regulation,0.0,0.0,0.0,0.0,0.09433962264150944,False,True,9.740768671035768,628,225,"Based on the provided financial context, the answer to the question depends on the specific details of the transaction. However, I can provide a general analysis.
+
+If a member bank purchases a loan or other asset from an affiliate but retains recourse to the affiliate on the asset, it could potentially be considered an extension of credit to the affiliate. This is because the bank is providing financial support to the affiliate by retaining recourse, which means the affiliate remains responsible for the loan or asset's performance and potential losses.
+
+In the context provided, the key factor is whether the proceeds of the extension of credit are used to purchase an asset through an affiliate of the member bank. If the bank retains recourse, it can be seen as providing financial support to the affiliate, which could be considered an extension of credit to the affiliate.
+
+However, if the bank does not retain recourse but instead assumes full responsibility for the loan or asset, the transaction would not be considered an extension of credit to the affiliate, as the bank is not providing financial support to the affiliate through recourse.",Yes.,0.0,0.002722526900470257
+mistral-7b,ftqa_0104,fintextqa,policy_regulation,0.0,0.0,0.0,0.0,0.1746031746031746,False,True,7.882322072982788,641,344,"Based on the provided financial context, the answer to the question depends on the specific details of the transaction between the affiliate and the member bank. However, I can provide some guidance on the conditions that would lead to an extension of credit by the bank to the affiliate.
+
+If the affiliate purchases assets from the member bank and pays for the assets at a later date, it could potentially generate an extension of credit by the bank to the affiliate under certain circumstances. These circumstances include:
+
+1. The affiliate is acting as a principal in the transaction, meaning it is not solely acting as an agent or broker for the member bank. In this case, the bank would treat the transaction as an extension of credit to the affiliate.
+2. The affiliate uses the bank's funds to purchase the assets, and the bank provides the funds to the affiliate before the affiliate pays the member bank. In this case, the bank would treat the transaction as an extension of credit to the affiliate.
+
+If the affiliate is acting as an agent or broker for the member bank and does not use the bank's funds to purchase the assets, and the affiliate pays the member bank directly without receiving funds from the bank first, then the bank would not treat the transaction as an extension of credit to the affiliate.
+
+In summary, if the affiliate is acting as a principal and uses the bank's funds to purchase the assets, or if the affiliate is acting as an agent or broker and receives funds from the bank before paying the member bank, the bank would consider the transaction as an extension of credit to the affiliate. Otherwise, the bank would not treat the transaction as an extension of credit to the affiliate.",Yes.,0.0,-0.03135335445404053
+mistral-7b,AWK/2017/page_148.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.4074074074074074,False,True,8.725897312164307,601,236,"To determine the percentage decrease in average borrowings from 2016 to 2017, we need to calculate the difference between the average borrowings in both years and then find the percentage of that difference relative to the 2016 average borrowings.
+
+In 2016, the average borrowings were $850. In 2017, the average borrowings were $779.
+
+Difference in average borrowings: $850 (2016) - $779 (2017) = $71
+
+Now, we calculate the percentage decrease:
+
+Percentage decrease = (Difference / Original amount) * 100%
+Percentage decrease = ($71 / $850) * 100%
+Percentage decrease = 0.084 * 100%
+Percentage decrease = 8.4%
+
+So, the average borrowings decreased by 8.4% from 2016 to 2017.",-0.08353,0.0,0.12965311110019684
+mistral-7b,IP/2006/page_38.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.4375,False,True,9.728861570358276,783,110,"To determine the percent of total debt compared to lease obligations and purchase obligations in 2007, we need to find the amounts for 2007 and then calculate the percentages. However, the provided financial context only includes data for 2014, 2015, and 2016. To accurately answer the question, we need the figures for 2007. Please provide the necessary data for 2007, and I will calculate the percentages for you.",0.21864,0.0,0.0566755086183548
+mistral-7b,AMT/2006/page_104.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.3787878787878788,False,True,7.9341981410980225,709,431,"Based on the provided financial context, we cannot directly determine the total cash obligations as of December 31, 2006. However, we can provide an estimation of the aggregate carrying value of long-term debt due in 2006.
+
+To do this, we need to find the total carrying value of long-term debt at the end of 2006 and then subtract the outstanding shares repurchased during that year.
+
+1. Find the total carrying value of long-term debt at the end of 2006:
+The context mentions that the long-term debt had a weighted average interest rate of 3.3% and a weighted average maturity of approximately 4.8 years at year-end 2018. However, it does not provide the carrying value of the long-term debt at the end of 2006.
+
+2. Find the number of outstanding shares repurchased in 2006:
+The context states that 10.7 million shares remained available for repurchase at year-end 2018. However, it does not provide the number of shares repurchased in 2006.
+
+Since we lack the necessary information for both points (carrying value of long-term debt at the end of 2006 and the number of shares repurchased in 2006), we cannot accurately calculate the total cash obligations as of December 31, 2006. We can only provide an estimation of the aggregate carrying value of long-term debt due in 2006.
+
+To estimate the aggregate carrying value of long-term debt due in 2006, we would need to know the carrying value of long-term debt at the end of 2006 and the number of shares repurchased in 2006. Without this information, we cannot accurately calculate the total cash obligations as of December 31, 2006.",0.09562,0.0,0.093229278922081
+mistral-7b,LMT/2014/page_77.pdf-2,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.6923076923076923,False,True,9.799422025680542,578,191,"Based on the provided financial context, we can calculate the change in millions of the weighted average common shares outstanding for diluted computations from 2013 to 2014 as follows:
+
+In 2013, the weighted average common shares outstanding for diluted computations were 326.5 million.
+In 2014, the weighted average common shares outstanding for diluted computations were 322.4 million.
+
+To find the change, subtract the 2014 figure from the 2013 figure:
+
+326.5 million (2013) - 322.4 million (2014) = 4 million
+
+The change in millions of the weighted average common shares outstanding for diluted computations from 2013 to 2014 is a decrease of 4 million.",-4.1,0.0,0.09828329086303711
+mistral-7b,UNP/2010/page_21.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.37142857142857144,False,True,6.848860740661621,650,347,"To determine how much more was spent on shares in November 2010 compared to December 2010, we need to calculate the total number of shares purchased in each month and then find the difference between the two totals.
+
+November 2010:
+Total shares purchased = 489390
+Average price per share = $74.22
+Total spent in November 2010 = Total shares purchased * Average price per share
+Total spent in November 2010 = 489390 * $74.22 = $36,998,003
+
+December 2010:
+Total shares purchased = 102400
+Average price per share = $74.83
+Total spent in December 2010 = Total shares purchased * Average price per share
+Total spent in December 2010 = 102400 * $74.83 = $76,000,880
+
+Now, we can calculate the difference between the two totals:
+
+Difference = Total spent in December 2010 - Total spent in November 2010
+Difference = $76,000,880 - $36,998,003 = $39,002,877
+
+So, $39,002,877 more was spent on shares in December 2010 compared to November 2010.",3462694.66,0.0,0.05652270466089249
+deepseek-r1-7b,financebench_id_00005,financebench,domain-relevant,0.0,0.21818181818181817,0.16969696969696973,0.0,0.19117647058823528,False,True,0.8292262554168701,741,399,"**Answer**
+
+Yes – Corning Incorporated had **positive working capital** in FY 2022.
+
+| Item | FY 2022 (in millions) |
+|------|-----------------------|
+| Current assets | **$7,453** |
+| Current liabilities | **$5,175** |
+| **Working capital** | **$7,453 – $5,175 = $2,278** |
+
+Thus, Corning’s working capital was **$2.278 billion**.
+
+**Why working capital matters for Corning**
+
+- Working capital measures the company’s short‑term liquidity: the ability to cover current obligations with current assets.
+- For a capital‑intensive, manufacturing‑focused firm like Corning, a positive working capital indicates that it has sufficient liquid assets (cash, receivables, inventories) to meet its short‑term liabilities (payables, short‑term debt, accrued expenses).
+- The figure also reflects the company’s operational efficiency: a healthy working‑capital buffer can support continued production, inventory replenishment, and timely supplier payments.
+
+Therefore, working capital is a useful and relevant metric for Corning, and the FY 2022 data show it is comfortably positive.",Yes. Corning had a positive working capital amount of $831 million by FY 2022 close. This answer considers only operating current assets and current liabilities that were clearly shown in the balance sheet.,0.0,0.8206174373626709
+deepseek-r1-7b,financebench_id_06655,financebench,metrics-generated,0.0,0.0,0.0,0.0,0.1724137931034483,False,True,0.7934997081756592,681,121,"I’m sorry, but the information you provided does not contain any of the Amazon financial figures (such as accounts payable, cost of goods sold, or inventory changes) needed to calculate FY2017 days payable outstanding. Therefore, I cannot compute the DPO from the given context.",93.86,0.0,0.19088241457939148
+deepseek-r1-7b,financebench_id_00080,financebench,domain-relevant,0.0,0.0979020979020979,0.0979020979020979,0.0,0.16216216216216217,False,True,0.8400959968566895,762,364,"**Answer**
+
+Yes – PayPal has a **positive working capital** in FY 2022.
+
+**Calculation**
+
+| Item | FY 2022 (in millions) |
+|------|-----------------------|
+| Current assets | **$57,517** |
+| Current liabilities | **$45,101** |
+| **Working capital** | $57,517 – $45,101 = **$12,416** |
+
+Thus, PayPal’s current assets exceed its current liabilities by **$12.4 billion**, indicating a healthy liquidity cushion.
+
+**Why working capital matters for PayPal**
+
+- PayPal’s core business involves processing payments and holding short‑term balances for merchants and consumers.  
+- Positive working capital shows the company can cover its day‑to‑day obligations (e.g., funds payable to merchants, accrued expenses) without needing to raise external financing.  
+- It also reflects the ability to invest in growth initiatives, technology upgrades, or strategic acquisitions.
+
+**Conclusion**
+
+Working capital is a useful and relevant metric for PayPal, and FY 2022 data demonstrate that the company maintains a solid positive working‑capital position.",Yes. Paypal has a positive working capital of $ 1.6Bn as of FY2022 end.,0.0,0.787131667137146
+deepseek-r1-7b,financebench_id_01244,financebench,domain-relevant,0.0,0.14545454545454545,0.10909090909090909,0.0,0.10344827586206896,True,True,0.8514745235443115,570,172,"I’m sorry, but the information provided does not include any details about CVS Health’s dividend payments, nor does it reference FY 2022 or Q2. Therefore, I cannot determine whether CVS Health paid dividends to common shareholders in that period from the given context.","Yes, CVS paid a $ 0.55 dividend per share every quarter in FY2022",0.0,0.7081027626991272
+deepseek-r1-7b,financebench_id_00790,financebench,domain-relevant,0.0,0.2595419847328244,0.13740458015267176,0.0,0.10869565217391304,True,True,1.0765080451965332,633,255,"**Answer:**  
+Based on the information provided in the excerpt, there is no direct data on capital expenditures, property‑plant‑equipment, or other capital‑asset metrics for FY 2022. The context gives earnings, cost‑of‑goods‑sold percentages, and intangible amortization, but it does not include the figures that would allow calculation of a capital‑intensity ratio (e.g., capital expenditures ÷ sales or net fixed assets ÷ sales).  
+
+**Therefore, from the supplied FY 2022 data alone, we cannot determine whether CVS Health is a capital‑intensive business.**","Yes, CVS Health requires an extensive asset base to operate, which is evident from its ROA of only 1.82% in 2022 and 3.39% in 2021, though it should be noted that a significant portion of this asset base is goodwill, and CVS's fixed assets/total assets ratio is on the lower side of 5.6%.",0.0,0.576027512550354
+deepseek-r1-7b,ftqa_0024,fintextqa,policy_regulation,0.0,0.13571428571428573,0.08571428571428573,0.0,0.04,False,True,0.996445894241333,531,512,"When you send money, keep the following points in mind to avoid mistakes and potential legal trouble:
+
+| What to check | Why it matters | What to do |
+|---------------|----------------|------------|
+| **Recipient’s account details** (bank account number, branch code, or FPS identifier such as mobile number or e‑mail) | A single wrong digit can send the money to the wrong person. | Verify the details against the recipient’s confirmation (e.g., a written note, a phone call, or a screenshot). |
+| **Transfer amount** | Even a small typo can result in a mis‑transfer that you may be required to return. | Double‑check the amount before confirming the transaction. |
+| **Transfer channel** (online banking, mobile app, ATM, FPS, etc.) | Different channels may have different confirmation steps or limits. | Make sure you’re using the correct channel and that you receive a clear confirmation receipt. |
+| **Transaction narrative / reference** | Helps the recipient (and the bank) identify the purpose of the transfer. | Include a clear, concise note (e.g., “Rent – June 2026”) if the system allows. |
+| **Date and time of the transfer** | Useful for tracking and for the bank’s records if a dispute arises. | Keep a copy of the transaction slip or screen‑capture. |
+| **Security checks** (two‑factor authentication, OTP, etc.) | Prevents unauthorized transfers. | Complete all required security steps before finalising the payment. |
+
+### If a mis‑transfer occurs
+
+1. **Act quickly** – report the error to your bank (the Transferor’s Institution) as soon as you notice it.  
+2. **Provide the required details** – date/time, amount, your account, and the recipient’s account (or FPS identifier).  
+3. **Consent","When making a fund transfer, a bank customer or SVF user should take great care and verify the accuracy of the inputted transferee’s account number and amount of funds to avoid mis-transfer of funds.",0.0,0.5522547960281372
+deepseek-r1-7b,ftqa_0006,fintextqa,policy_regulation,0.0,0.12698412698412698,0.06984126984126984,0.0,0.0625,True,True,0.871009111404419,546,184,"The provided financial context focuses on commercial lending commitments, credit loss protection, and related accounting details. It does **not** contain any information about Money Laundering & Terrorist Financing (ML/TF) or how such matters might be relevant to you. Therefore, based on the supplied text, I cannot determine what ML/TF is or its relevance to you.","As an international financial centre, Hong Kong attaches great importance to safeguarding the integrity of its financial systems by implementing Anti-Money Laundering and Counter-Financing of Terrorism (AML/CFT) regime which meets international standards. The banking sector, as a gatekeeper of the financial system, plays an important role in that regime.  The HKMA has developed relevant policies and provided guidance to banks in establishing AML/CFT Systems, which includes preventive measures such as customer due diligence (CDD), transaction monitoring and record keeping, for identifying and appropriately mitigating ML/TF risks. When conducting CDD, banks collect information/documents from customers and reliable sources at account opening and on periodic basis thereafter to identify and verify their customers and develop an understanding of normal and expected banking activities of individual customers for ongoing monitoring of any abuse of banking services or illicit fund flows. Customers can contribute to the efforts in the fight against crime by providing accurate and up-to-date information upon request by banks. Such cooperation will not only help banks in meeting their legal and regulatory obligations and safeguarding the integrity of the financial system in Hong Kong, but also help protect bank customers from becoming the victims of fraud and other criminal activities. Banks adopt a risk-based approach in conducting AML/CFT work, which recognises that risks of different customers and different banking services are different, and thus CDD and risk mitigating measures adopted by banks should be proportionate to the risk level and not to bring undue burden on the customers. More information can be found on the FAQs Section about Account Opening and Operation.",0.0,0.5027437210083008
+deepseek-r1-7b,ftqa_0093,fintextqa,policy_regulation,0.0,0.4067796610169491,0.22033898305084745,0.0,0.3902439024390244,False,True,1.147663116455078,729,512,"**Answer**
+
+No.  
+The presumption of affiliation in **Regulation W § 223.2(a)(9)(i)** applies only when a holding company of the member bank **owns or controls 15 % or more** of a company’s equity capital under the merchant‑banking or insurance‑company investment authority of **section 4(k)(4)(H) or (I) of the BHC Act**.  
+
+In the scenario described:
+
+| Source of ownership | Percentage owned/controlled | Threshold for § 223.2(a)(9)(i) |
+|---------------------|----------------------------|--------------------------------|
+| Merchant‑banking/insurance‑company investment authority (4(k)(4)(H)/(I)) | **12 %** | 15 % |
+| Section 4(c","Yes, since a bank holding company may not own any shares of a company in reliance on section 4(c)(6) of the BHC Act if it owns or controls, in the aggregate under a combination of authorities, more than 5 percent of any class of voting securities of the company.",0.0,0.7435618042945862
+deepseek-r1-7b,ftqa_0109,fintextqa,policy_regulation,0.0,0.004434589800443459,0.004434589800443459,0.0,0.1076923076923077,False,True,1.3153316974639893,631,512,"We need to answer: If a member bank purchases a loan or other asset from an affiliate but retains recourse to the affiliate on the asset, would that be considered an extension of credit by the bank to the affiliate? The context: The text says: ""a member bank may not purchase a low-quality asset from an affiliate unless, pursuant to an independent credit evaluation, the member bank had committed itself to purchase the asset before the time the asset was acquired by the affiliate."" Also: ""a member bank must treat any of its transactions with any person as a transaction with an affiliate to the extent that the proceeds of the transaction are used for the benefit of, or transferred to, an affiliate."" And: ""an extension of credit by a member bank to a nonaffiliate is not treated as an extension of credit to an affiliate under paragraph (a) of this section if: (i) The proceeds of the extension of credit are used to purchase an asset through an affiliate of the member bank, and the affiliate is acting exclusively as an agent or broker in the transaction."" So the question: If a member bank purchases a loan or other asset from an affiliate but retains recourse to the affiliate on the asset, would that be considered an extension of credit by the bank to the affiliate? The context indicates that if the bank purchases an asset from an affiliate, that is a transaction with an affiliate. The bank may not purchase a low-quality asset from an affiliate unless it had committed to purchase before the affiliate acquired it. The question is about extension of credit: The bank purchases an asset from an affiliate but retains recourse to the affiliate on the asset. That means the bank is effectively extending credit to the affiliate? The text says: ""an extension of credit by a member bank to a nonaffiliate is not treated as an extension of credit to an affiliate under paragraph (a) of this section if: (i) The proceeds of the extension of credit are used to purchase an asset through an affiliate of the member bank, and the affiliate is acting exclusively as an agent or broker in the transaction."" But here the bank is purchasing an asset from an affiliate, not extending credit to a nonaffiliate. The bank retains recourse to the affiliate. That suggests that the bank is effectively extending credit to the affiliate because the affiliate is the seller and the bank has recourse. So yes, it would be considered an extension of credit to the affiliate. The context: ""a member bank must treat any of its transactions with any person as a transaction with an",Yes.,0.0,-0.006657457910478115
+deepseek-r1-7b,ftqa_0104,fintextqa,policy_regulation,0.0,0.014705882352941178,0.014705882352941178,0.0,0.3793103448275862,False,True,3.478685140609741,640,512,"**Answer**
+
+Yes.  
+When an affiliate buys assets from a member bank and agrees to pay for them at a later date, the bank is effectively extending credit to that affiliate.  
+
+**Why this is an extension of credit**
+
+1. **Definition in the regulation** – Paragraph (b)(1)(o) defines “extension of credit to an affiliate” as *the making or renewal of a loan, the granting of a line of credit, or the extending of credit in any manner whatsoever, including on an intraday basis, to an affiliate*.  
+2. **Deferred payment is credit** – A sale in which the buyer (the affiliate) pays later is a form of credit: the bank is providing the affiliate with the asset now and receiving payment in the future.  
+3. **No exception applies** – The only exception that would exclude such a transaction",Yes.,0.0,0.051601022481918335
+deepseek-r1-7b,AWK/2017/page_148.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.4,False,True,8.014703512191772,593,163,"Average borrowings fell from **$850 million in 2016 to $779 million in 2017**.  
+The decrease is:
+
+\[
+\frac{850 - 779}{850} \times 100 \approx \frac{71}{850} \times 100 \approx 8.35\%
+\]
+
+So, average borrowings decreased by **about 8.3 %** from 2016 to 2017.",-0.08353,0.0,0.1293872892856598
+deepseek-r1-7b,IP/2006/page_38.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.4642857142857143,False,True,4.836497783660889,707,156,"I’m sorry, but the information you’re asking for isn’t available in the data you provided. The table only contains figures for 2014, and there are no 2007 figures for total debt, lease obligations, or purchase obligations in the excerpt. Therefore, I cannot calculate the requested percentage for 2007.",0.21864,0.0,0.10782623291015625
+deepseek-r1-7b,AMT/2006/page_104.pdf-1,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.2564102564102564,True,True,4.911447763442993,650,174,"The information needed to answer that question is not present in the provided financial context. The data given covers loan activity, equity method investments, and debt figures for the years 2016, 2017, and 2018, but there is no reference to the carrying value of long‑term debt due in 2006. Therefore, I cannot determine the total cash obligations aggregate carrying value of long‑term debt due in 2006 from the supplied text.",0.09562,0.0,0.09487252682447433
+deepseek-r1-7b,LMT/2014/page_77.pdf-2,finqa,numerical_reasoning,0.0,0.046511627906976744,0.046511627906976744,0.0,0.7,False,True,6.065631628036499,569,244,"The weighted‑average common shares outstanding used for diluted earnings per share were:
+
+- **2013:** 326.5 million  
+- **2014:** 322.4 million  
+
+Change = 322.4 million – 326.5 million = **‑4.1 million** shares.
+
+So, from 2013 to 2014 the diluted weighted‑average common shares outstanding decreased by **4.1 million**.",-4.1,0.0,0.12408179044723511
+deepseek-r1-7b,UNP/2010/page_21.pdf-4,finqa,numerical_reasoning,0.0,0.0,0.0,0.0,0.2,False,True,4.962675094604492,608,147,"I’m sorry, but the information provided only covers share repurchases for the months of October, November, and December 2012. There is no data for November 2010 or December 2010 in the context, so I cannot calculate how much more was spent in November 2010 compared to December 2010.",3462694.66,0.0,0.006987947970628738

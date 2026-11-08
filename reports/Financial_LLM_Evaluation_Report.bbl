@@ -1,0 +1,94 @@
+\begin{thebibliography}{18}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Asai et~al.(2024)Asai, Wu, Wang, Sil, and Hajishirzi}]{asai2023selfrag}
+Akari Asai, Zeqiu Wu, Yizhong Wang, Avirup Sil, and Hannaneh Hajishirzi. 2024.
+\newblock Self-{RAG}: Learning to retrieve, generate, and critique through self-reflection.
+\newblock In \emph{The Twelfth International Conference on Learning Representations (ICLR)}.
+
+\bibitem[{Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal, Neelakantan, Shyam, Sastry, Askell et~al.}]{brown2020language}
+Tom~B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, et~al. 2020.
+\newblock Language models are few-shot learners.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, volume~33, pages 1877--1901.
+
+\bibitem[{Chen et~al.(2024)Chen, Zhang, Patel, Smiley, and Shah}]{chen2024fintextqa}
+Jian Chen, Yilun Zhang, Dhruv Patel, Charese Smiley, and Sameena Shah. 2024.
+\newblock {FinTextQA}: A dataset for long-form financial question answering.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 8942--8958. Association for Computational Linguistics.
+
+\bibitem[{Chen et~al.(2021)Chen, Chen, Smiley, Shah, Borova, Langdon, Moussa, Beane, Huang, and Wang}]{chen2021finqa}
+Zhiyu Chen, Wenhu Chen, Charese Smiley, Sameena Shah, Iana Borova, Dylan Langdon, Reema Moussa, Matt Beane, Ting-Hao Huang, and William~Yang Wang. 2021.
+\newblock {FinQA}: A dataset of numerical reasoning over financial data.
+\newblock In \emph{Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pages 3697--3711. Association for Computational Linguistics.
+
+\bibitem[{{DeepSeek-AI} et~al.(2025){DeepSeek-AI}, Liu, Feng, Wang, Wang, Liu, Chen et~al.}]{deepseek2025r1}
+{DeepSeek-AI}, Aixin Liu, Bei Feng, Bing Wang, Bingxuan Wang, Bo~Liu, Chenggang Chen, et~al. 2025.
+\newblock {DeepSeek-R1}: Incentivizing reasoning capability in {LLMs} via reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2501.12948}.
+
+\bibitem[{Gao et~al.(2023)Gao, Xiong, Wang, Wang, Zhu, Chen, Li, Lin, Wang, Zhang et~al.}]{gao2023retrieval}
+Yunfan Gao, Yun Xiong, Xinyu Wang, Kehai Wang, Choujun Zhu, Zhaocheng Chen, Haofen Li, Ying Lin, Jiwei Wang, Tao Zhang, et~al. 2023.
+\newblock Retrieval-augmented generation for large language models: A survey.
+\newblock \emph{arXiv preprint arXiv:2312.10997}.
+
+\bibitem[{Islam et~al.(2023)Islam, Anand, Ding, Grabovickic, Agrawal, Kankaria, and Patel}]{islam2023financebench}
+Pranab Islam, Anand Anand, Andrew Ding, Amanda Grabovickic, Aman Agrawal, Rachit Kankaria, and Shivam Patel. 2023.
+\newblock {FinanceBench}: A new benchmark for financial question answering.
+\newblock \emph{arXiv preprint arXiv:2311.11944}.
+
+\bibitem[{Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot, Casas, Bressand et~al.}]{jiang2023mistral}
+Albert~Q. Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford, Devendra~Singh Chaplot, Diego de~las Casas, Florian Bressand, et~al. 2023.
+\newblock Mistral 7b.
+\newblock \emph{arXiv preprint arXiv:2310.06825}.
+
+\bibitem[{Johnson et~al.(2019)Johnson, Douze, and J{\'e}gou}]{johnson2019faiss}
+Jeff Johnson, Matthijs Douze, and Herv{\'e} J{\'e}gou. 2019.
+\newblock Billion-scale similarity search with {GPUs}.
+\newblock \emph{IEEE Transactions on Big Data}, 7(3):535--547.
+
+\bibitem[{Khattab and Zaharia(2020)}]{khattab2020colbert}
+Omar Khattab and Matei Zaharia. 2020.
+\newblock {ColBERT}: Efficient and effective passage search via contextualized late interaction over {BERT}.
+\newblock In \emph{Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval}, pages 39--48.
+
+\bibitem[{Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal, K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, Riedel, and Kiela}]{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim Rockt{\"a}schel, Sebastian Riedel, and Douwe Kiela. 2020.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems (NeurIPS)}, volume~33, pages 9459--9474.
+
+\bibitem[{Lin(2004)}]{lin2004rouge}
+Chin-Yew Lin. 2004.
+\newblock {ROUGE}: A package for automatic evaluation of summaries.
+\newblock In \emph{Text Summarization Branches Out: Post-Conference Workshop of ACL 2004}, pages 74--81.
+
+\bibitem[{{Meta AI} et~al.(2024){Meta AI}, Dubey, Jauhri, Pandey, Kadian, Al-Dahle et~al.}]{meta2024llama3}
+{Meta AI}, Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, et~al. 2024.
+\newblock The {Llama 3} herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}.
+
+\bibitem[{Reimers and Gurevych(2019)}]{reimers2019sentencebert}
+Nils Reimers and Iryna Gurevych. 2019.
+\newblock Sentence-{BERT}: Sentence embeddings using siamese {BERT}-networks.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pages 3982--3992. Association for Computational Linguistics.
+
+\bibitem[{Shah et~al.(2022)Shah, Chawla, Eidnani, Shah, Du, Sudjianto, Bhat, Cheemalamarri, Singhal, and Verma}]{shah2022flue}
+Raj~Sanjay Shah, Kunal Chawla, Dheeraj Eidnani, Agam Shah, Wenyuan Du, Agus Sudjianto, Shweta Bhat, Rajesh Cheemalamarri, Gaurav Singhal, and Mounica Verma. 2022.
+\newblock When {FLUE} meets {FLANG}: Benchmarks and large pretrained language model for financial domain.
+\newblock \emph{arXiv preprint arXiv:2211.00083}.
+
+\bibitem[{Touvron et~al.(2023)Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov et~al.}]{touvron2023llama2}
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, et~al. 2023.
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock \emph{arXiv preprint arXiv:2307.09288}.
+
+\bibitem[{Yang et~al.(2024)Yang, Yang, Hui, Zheng, Yu, Zhou, Li et~al.}]{yang2024qwen25}
+An~Yang, Baosong Yang, Binyuan Hui, Bo~Zheng, Bowen Yu, Chang Zhou, Chengpeng Li, et~al. 2024.
+\newblock {Qwen2.5} technical report.
+\newblock \emph{arXiv preprint arXiv:2412.15115}.
+
+\bibitem[{Zheng et~al.(2022)Zheng, Huang, Smiley, and Shah}]{zheng2022convfinqa}
+Zhiyu Zheng, Kexin Huang, Charese Smiley, and Sameena Shah. 2022.
+\newblock {ConvFinQA}: Exploring the chain of numerical reasoning in conversational finance question answering.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pages 6279--6292. Association for Computational Linguistics.
+
+\end{thebibliography}

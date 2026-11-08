@@ -48,7 +48,7 @@ cells.append(md("""\
 
 ## Project Overview
 
-This notebook presents a **systematic empirical evaluation** of six open-weight Large Language Models (LLMs) on three established financial question-answering benchmarks.
+This notebook presents a **systematic empirical evaluation** of four open-weight Large Language Models (LLMs) on three established financial question-answering benchmarks.
 
 ### Datasets
 
@@ -60,20 +60,18 @@ This notebook presents a **systematic empirical evaluation** of six open-weight 
 
 > **Note:** We evaluate only the publicly available portions. Full FinanceBench (10,231 questions) and FinTextQA textbook portions are not publicly available. This is documented accurately throughout.
 
-### Six Open-Weight Models
+### Four Open-Weight Models
 
 | # | Model | HF ID | Family | Params | Access |
 |---|---|---|---|---|---|
 | 1 | Qwen2.5-7B-Instruct | `Qwen/Qwen2.5-7B-Instruct` | Qwen | 7B | Open |
 | 2 | Llama-3.1-8B-Instruct | `meta-llama/Llama-3.1-8B-Instruct` | Llama | 8B | 🔒 Gated |
 | 3 | Mistral-7B-Instruct-v0.3 | `mistralai/Mistral-7B-Instruct-v0.3` | Mistral | 7B | Open |
-| 4 | Gemma-2-9B-it | `google/gemma-2-9b-it` | Gemma | 9B | 🔒 Gated |
-| 5 | Phi-3.5-mini-instruct | `microsoft/Phi-3.5-mini-instruct` | Phi | 3.8B | Open |
-| 6 | DeepSeek-R1-Distill-Qwen-7B | `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B` | DeepSeek | 7B | Open |
+| 4 | DeepSeek-R1-Distill-Qwen-7B | `deepseek-ai/DeepSeek-R1-Distill-Qwen-7B` | DeepSeek | 7B | Open |
 
 ### Key Contributions
 
-1. **Controlled comparison** — identical prompts, generation parameters, and inference infrastructure for all six models
+1. **Controlled comparison** — identical prompts, generation parameters, and inference infrastructure for all four models
 2. **RAG pipeline** — FAISS-based dense retrieval + BM25 sparse baseline, compared with direct LLM answering
 3. **Multi-metric evaluation** — EM, Token F1, ROUGE-L, Numeric Accuracy, BERTScore, Semantic Similarity, Faithfulness
 4. **Question complexity analysis** — performance breakdown by question category
@@ -265,9 +263,8 @@ copy .env.example .env
 
 **Get your HF token:** https://huggingface.co/settings/tokens
 
-**Accept gated model licenses:**
-- Llama-3.1: https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct  
-- Gemma-2: https://huggingface.co/google/gemma-2-9b-it
+**Model access:**
+- Llama-3.1: https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct (or via Groq API)
 """))
 
 cells.append(code("""\
@@ -376,7 +373,7 @@ cells.append(md("""\
 ---
 ## Section 5: Model Registry & Verification
 
-The six candidate models were verified for:
+The four candidate models were verified for:
 - Availability on Hugging Face
 - License and gating requirements
 - Support by HF Inference Providers API
@@ -401,7 +398,7 @@ for key, info in MODELS.items():
     })
 
 models_df = pd.DataFrame(models_info)
-print("SIX OPEN-WEIGHT MODELS FOR EVALUATION")
+print("FOUR OPEN-WEIGHT MODELS FOR EVALUATION")
 print("=" * 80)
 display(models_df[["Key", "Model ID (HuggingFace)", "Family", "Params", "Access"]])
 
@@ -424,7 +421,6 @@ print("\\n⚠️  Gated models require:")
 print("   • HF_TOKEN set in .env")
 print("   • License accepted at model page:")
 print("   • Llama-3.1-8B-Instruct → https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct")
-print("   • Gemma-2-9B-it         → https://huggingface.co/google/gemma-2-9b-it")
 """))
 
 # =============================================================================
@@ -764,7 +760,7 @@ cells.append(md("""\
 ---
 ## Section 9: Common Inference Pipeline
 
-All six models are called through **identical infrastructure** to ensure fair comparison:
+All four models are called through **identical infrastructure** to ensure fair comparison:
 - Same API endpoint (Hugging Face Inference Providers)
 - Same system prompt and user message format  
 - Same generation parameters (temperature=0, max_tokens=512)
@@ -823,8 +819,8 @@ cells.append(md("""\
 Each model receives the question + benchmark-provided context directly.  
 Results are saved incrementally (checkpoint/resume enabled).
 
-> **Cost note:** This calls the HF Inference API for each question × model.  
-> In pilot mode (5 questions × 6 models × 3 datasets = 90 calls max).  
+> **Cost note:** This calls the Inference API for each question × model.  
+> In pilot mode (5 questions × 4 models × 3 datasets = 60 calls max).  
 > API usage depends on your HF account tier.
 """))
 
@@ -1193,7 +1189,7 @@ cells.append(md("""\
 ---
 ## Section 14: Results Visualization
 
-Publication-quality charts comparing all six models across all metrics and datasets.  
+Publication-quality charts comparing all four models across all metrics and datasets.  
 All plots saved to `results/plots/`.
 
 > If model evaluation has not yet been run (no HF_TOKEN), **demo visualizations** 
@@ -1229,8 +1225,6 @@ else:
         "qwen2.5-7b":     (0.28, 0.65),
         "llama3.1-8b":    (0.25, 0.60),
         "mistral-7b":     (0.22, 0.58),
-        "gemma2-9b":      (0.30, 0.68),
-        "phi3.5-mini":    (0.20, 0.55),
         "deepseek-r1-7b": (0.35, 0.72),
     }
     for model, (low, high) in model_perf_ranges.items():
@@ -1531,8 +1525,8 @@ cells.append(md("""\
 - **Sampling:** Pilot mode evaluates 5 questions/dataset — statistically insufficient for robust conclusions. Full evaluation requires running with `PILOT_MODE=False`.
 
 ### Model Access Limitations
-- Llama-3.1 and Gemma-2 require accepting license agreements on Hugging Face. Users who have not done this will get access errors.
-- HF Inference Providers API may apply rate limits or queue requests during peak hours.
+- Llama-3.1 requires accepting the Meta license agreement if queried via Hugging Face.
+- Groq / Inference Providers API may apply rate limits or queue requests during peak hours.
 - Provider-side optimizations (quantization, batching) may differ from paper-reported numbers.
 
 ### Evaluation Metric Limitations
@@ -1551,7 +1545,7 @@ cells.append(md("""\
 - No ensemble or chain-of-thought prompting applied.
 
 ### Conclusion
-> Despite these limitations, this study provides a **systematic, reproducible comparison** of six open-weight LLMs under identical conditions — which is rare in existing financial NLP literature. The RAG comparison adds practical value for practitioners choosing between direct LLM and retrieval-augmented approaches.
+> Despite these limitations, this study provides a **systematic, reproducible comparison** of four open-weight LLMs under identical conditions — which is rare in existing financial NLP literature. The RAG comparison adds practical value for practitioners choosing between direct LLM and retrieval-augmented approaches.
 """))
 
 # =============================================================================
@@ -1584,7 +1578,6 @@ copy .env.example .env
 
 # 3. Accept gated model licenses (if needed):
 #    https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
-#    https://huggingface.co/google/gemma-2-9b-it
 
 # 4. Run notebook cell by cell
 cd notebooks

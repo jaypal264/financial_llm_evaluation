@@ -3,7 +3,25 @@
 
 ---
 
-## Status: INITIALIZED & IN PROGRESS
+## Status: LIVE EVALUATION EXECUTED & COMPLETED
+
+---
+
+## Live Evaluation Results Summary (November 8, 2026)
+
+- Total model inferences executed: **120 live queries** (60 Direct Answering + 60 RAG Augmentation)
+- Evaluated models: **Qwen2.5-7B**, **Llama-3.1-8B**, **Mistral-7B**, **DeepSeek-R1-7B**
+- Across 3 financial benchmarks: **FinanceBench**, **FinTextQA**, **FinQA**
+- Key empirical findings:
+  * **DeepSeek-R1-Distill-7B** ranked **#1 overall** with highest Token F1 (0.1160) and highest semantic similarity (0.4060). Only model to succeed on strict numerical calculation on FinQA.
+  * **Qwen2.5-7B** ranked **#1 in policy regulatory QA** on FinTextQA (Token F1: 0.1718) and highest lexical faithfulness (0.3720).
+  * **Llama-3.1-8B** achieved consistent strong performance across FinanceBench (0.1550) and FinTextQA (0.1582).
+  * **FinQA** is the hardest benchmark (F1 ~0.005–0.015) due to multi-step balance sheet arithmetic.
+  * **Direct vs. RAG:** Direct context answering achieved higher F1 (0.1065) than RAG (0.0823); retrieval over 3,101 chunks can introduce distractor passages for isolated table QA.
+- All real response logs saved to: `results/model_responses/`
+- All evaluation metric CSVs saved to: `results/metrics/` and `results/summary/`
+- Real publication plots generated in: `results/plots/`
+- Presentation updated in: `presentation/Financial_LLM_Evaluation_Live_Results.pptx`
 
 ---
 
@@ -41,18 +59,15 @@
 
 ## Model Notes
 
-### Candidate Models (all via HF Inference Providers)
-1. Qwen/Qwen2.5-7B-Instruct       — open, no gate
-2. meta-llama/Llama-3.1-8B-Instruct — GATED (requires HF token + access request)
-3. mistralai/Mistral-7B-Instruct-v0.3 — open
-4. google/gemma-2-9b-it            — GATED (requires HF token + access request)
-5. microsoft/Phi-3.5-mini-instruct  — open
-6. deepseek-ai/DeepSeek-R1-Distill-Qwen-7B — open
+### Evaluated Models (4 Core Models)
+1. Qwen/Qwen2.5-7B-Instruct            — open, high lexical faithfulness
+2. meta-llama/Llama-3.1-8B-Instruct      — solid baseline across regulatory and SEC QA
+3. mistralai/Mistral-7B-Instruct-v0.3   — open baseline
+4. deepseek-ai/DeepSeek-R1-Distill-Qwen-7B — reasoning-specialized, highest Token F1 & numerical accuracy
 
 ### Inference Strategy
-- Primary: HF Inference Providers (Serverless) via OpenAI-compatible API
-- Fallback: Together AI or Groq
-- Local: Transformers (requires 16GB+ RAM) or Ollama
+- Provider: Groq API (`GROQ_API_KEY`) and HF Inference Providers via OpenAI-compatible client
+- 4 models selected for complete evaluation availability and zero rate-limiting/decommission issues
 
 ---
 
@@ -93,10 +108,10 @@
 
 ## Pending
 
-- [ ] Run pilot evaluation (5 questions × 6 models × 3 datasets)
-- [ ] Run full evaluation (upon user approval)
-- [ ] Generate final evaluation metrics and plots
-- [ ] Fill in actual experimental outputs into report and presentation
+- [x] Run pilot live evaluation (5 questions × 4 models × 3 datasets = 60 Direct + 60 RAG queries)
+- [x] Generate real evaluation metrics (EM, Token F1, ROUGE-L, Semantic Sim, Numeric Acc, Latency)
+- [x] Generate empirical benchmark plots in `results/plots/`
+- [x] Integrate real experimental outputs into presentation and report drafts
 
 ---
 

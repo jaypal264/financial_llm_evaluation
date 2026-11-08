@@ -36,8 +36,6 @@ MODEL_COLORS = {
     "qwen2.5-7b": "#2196F3",
     "llama3.1-8b": "#FF5722",
     "mistral-7b": "#9C27B0",
-    "gemma2-9b": "#4CAF50",
-    "phi3.5-mini": "#FF9800",
     "deepseek-r1-7b": "#00BCD4",
 }
 
@@ -51,8 +49,6 @@ MODEL_DISPLAY = {
     "qwen2.5-7b": "Qwen2.5-7B",
     "llama3.1-8b": "Llama-3.1-8B",
     "mistral-7b": "Mistral-7B",
-    "gemma2-9b": "Gemma-2-9B",
-    "phi3.5-mini": "Phi-3.5-mini",
     "deepseek-r1-7b": "DeepSeek-R1-7B",
 }
 

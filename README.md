@@ -12,7 +12,7 @@ Financial question answering requires specialized capabilities that general-doma
 3. **Domain-specific terminology comprehension** spanning accounting standards, banking regulations (e.g., Basel III), and monetary policy.
 4. **Hallucination resistance**, which is critical given the severe compliance, financial, and legal implications of incorrect outputs in financial decision-making.
 
-This project investigates and systematically compares **six open-weight Large Language Models (LLMs)** across three premier financial QA benchmarks under identical, controlled inference conditions. In addition, we design, implement, and evaluate a **Retrieval-Augmented Generation (RAG)** pipeline to examine whether external dense retrieval improves answering accuracy over direct LLM inference.
+This project investigates and systematically compares **four open-weight Large Language Models (LLMs)** across three premier financial QA benchmarks under identical, controlled inference conditions. In addition, we design, implement, and evaluate a **Retrieval-Augmented Generation (RAG)** pipeline to examine whether external dense retrieval improves answering accuracy over direct LLM inference.
 
 ---
 
@@ -44,25 +44,23 @@ All datasets are downloaded and cached via automated scripts with verified fallb
 
 ---
 
-## 4. Six Evaluated Open-Weight Models
+## 4. Four Evaluated Open-Weight Models
 
-All models are accessed via an OpenAI-compatible interface using the Hugging Face Inference Providers API (with support for local execution via Transformers or Ollama):
+All models are accessed via an OpenAI-compatible interface using high-throughput serverless API inference (with support for local execution via Transformers or Ollama):
 
 | # | Model | Family | Parameters | Architecture Highlights | License / Access |
 |---|---|---|---|---|---|
 | 1 | **Qwen2.5-7B-Instruct** | Qwen | 7.6B | Dense transformer, strong multilingual & math abilities | Open (Apache 2.0) |
 | 2 | **Llama-3.1-8B-Instruct** | Llama | 8.0B | Grouped-Query Attention (GQA), 128k context support | Gated (Meta Llama 3.1 Community) |
 | 3 | **Mistral-7B-Instruct-v0.3** | Mistral | 7.3B | Sliding window attention, extended tokenizer vocabulary | Open (Apache 2.0) |
-| 4 | **Gemma-2-9B-it** | Gemma | 9.2B | Interleaved local/global attention, knowledge distillation | Gated (Gemma Terms of Use) |
-| 5 | **Phi-3.5-mini-instruct** | Phi | 3.8B | High-quality synthetic & curated pretraining data | Open (MIT) |
-| 6 | **DeepSeek-R1-Distill-Qwen-7B** | DeepSeek | 7.6B | Distilled from DeepSeek-R1 with reasoning chain-of-thought | Open (MIT) |
+| 4 | **DeepSeek-R1-Distill-Qwen-7B** | DeepSeek | 7.6B | Distilled from DeepSeek-R1 with reasoning chain-of-thought | Open (MIT) |
 
 ---
 
 ## 5. Experimental Methodology
 
 ### Controlled Inference Conditions
-To guarantee a fair comparison across all six models:
+To guarantee a fair comparison across all four models:
 - **Zero-Shot Evaluation:** Uniform system prompt defining the persona of an expert financial analyst.
 - **Deterministic Decoding:** `temperature = 0.0` (greedy decoding), `do_sample = False`, `max_new_tokens = 512`.
 - **Identical Infrastructure:** Hugging Face Inference Providers API with automatic retry and exponential backoff.
@@ -212,7 +210,7 @@ RANDOM_SEED=42
 ```
 
 > **Gated Model Access:**
-> To query gated models (`meta-llama/Llama-3.1-8B-Instruct` and `google/gemma-2-9b-it`), accept the terms of use on their Hugging Face model cards using the account corresponding to your `HF_TOKEN`.
+> For gated models like `meta-llama/Llama-3.1-8B-Instruct`, accept the terms of use on its model card if using Hugging Face, or query it seamlessly via Groq API.
 
 ---
 

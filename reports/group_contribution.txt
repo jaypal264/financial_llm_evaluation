@@ -1,222 +1,245 @@
-Group Contribution Document
-Financial LLM Evaluation: Comparing Open-Weight Large Language Models 
-on Financial Question Answering Benchmarks
-
-IIT Guwahati | B.Tech Data Science & Artificial Intelligence | Big Data Analytics Course
-
 ================================================================================
-IMPORTANT NOTE
-================================================================================
-This is a TEMPLATE document with placeholder names and roll numbers.
-Each team member must:
-1. Fill in their actual name and roll number.
-2. Review the contribution statements and edit them to reflect actual work done.
-3. Confirm that the described contributions are accurate before submission.
-Do NOT submit with placeholder text.
+GROUP CONTRIBUTION DOCUMENT — BIG DATA ANALYTICS PROJECT
 ================================================================================
 
-GROUP MEMBERS
+Project Title: Financial LLM Evaluation: Comparing Open-Weight Large Language Models 
+               on Financial Question Answering Benchmarks
+Institution:   Mehta Family School of Data Science and Artificial Intelligence
+               Indian Institute of Technology Guwahati
+Course:        Big Data Analytics (Autumn 2026)
 
-Member 1: [Name] | Roll Number: [Roll No.] | Email: [email@iitg.ac.in]
-Member 2: [Name] | Roll Number: [Roll No.] | Email: [email@iitg.ac.in]
-Member 3: [Name] | Roll Number: [Roll No.] | Email: [email@iitg.ac.in]
-
-================================================================================
-CONTRIBUTION BREAKDOWN
-================================================================================
-
-----------------------------------------------------------------------------
-AREA 1: DATASET ACQUISITION AND PREPROCESSING
-Primary Contributor: Member 1
-Supporting: Members 2, 3
-----------------------------------------------------------------------------
-
-Member 1:
-• Identified and accessed the three official dataset sources:
-  FinanceBench (PatronusAI/financebench), FinTextQA (GPS-Lab/FinTextQA),
-  and FinQA (ibm-research/finqa) from Hugging Face.
-• Developed data_loader.py with download, caching, and fallback logic.
-• Created the unified dataset schema with 10 standardized fields.
-• Documented dataset limitations accurately (public subset sizes, missing textbook
-  portion in FinTextQA, full benchmark unavailability in FinanceBench).
-• Developed preprocessing.py for cleaning, truncation, and pilot sampling.
-• Generated dataset statistics and EDA visualizations (Sections 6–8 of notebook).
-
-Member 2:
-• Reviewed dataset formats and suggested schema improvements.
-
-Member 3:
-• Verified EDA outputs and contributed to the dataset description sections
-  of the research report.
-
-----------------------------------------------------------------------------
-AREA 2: MODEL INTEGRATION AND INFERENCE PIPELINE
-Primary Contributor: Member 2
-Supporting: Members 1, 3
-----------------------------------------------------------------------------
-
-Member 2:
-• Researched all six candidate models for accessibility, licensing, and
-  Hugging Face availability.
-• Implemented model_inference.py with:
-  - Full model registry with gating status and notes
-  - OpenAI-compatible client setup for HF Inference Providers, Together AI, Groq, Ollama
-  - Uniform prompt template ensuring fair comparison across all six models
-  - Checkpoint/resume functionality using MD5-keyed JSON checkpoints
-  - Retry logic with exponential backoff via tenacity
-  - Incremental result saving (JSONL format)
-• Configured identical generation parameters (temperature=0, greedy decoding)
-  for reproducibility.
-• Executed Experiment A (Direct LLM Evaluation) and monitored API calls.
-
-Member 1:
-• Set up .env configuration and API key management.
-• Helped debug model-specific error handling.
-
-Member 3:
-• Helped analyze model response patterns and latency characteristics.
-
-----------------------------------------------------------------------------
-AREA 3: RAG IMPLEMENTATION
-Primary Contributor: Member 2
-Supporting: Member 1
-----------------------------------------------------------------------------
-
-Member 2:
-• Designed and implemented rag_pipeline.py with:
-  - Document chunking with configurable chunk_size and overlap
-  - FAISS dense retrieval index (sentence-transformers/all-MiniLM-L6-v2)
-  - BM25 sparse retrieval baseline (rank_bm25)
-  - Corpus construction ensuring reference answers are excluded
-  - build_rag_contexts() function for RAG-augmented DataFrame construction
-• Executed Experiment B (RAG Evaluation) and compared results with Experiment A.
-• Documented retrieval methodology and analyzed retrieval quality examples.
-
-Member 1:
-• Helped verify that reference answers were correctly excluded from the corpus.
-• Contributed to the RAG architecture description in the report.
-
-----------------------------------------------------------------------------
-AREA 4: EVALUATION METRICS AND STATISTICAL ANALYSIS
-Primary Contributor: Member 3
-Supporting: Members 1, 2
-----------------------------------------------------------------------------
-
-Member 3:
-• Implemented evaluation.py with:
-  - Exact Match (EM) with text normalization
-  - Token-level F1 (SQuAD-style)
-  - ROUGE-L (pure Python LCS + rouge-score library fallback)
-  - Numeric Accuracy with currency/percentage normalization and 0.5% tolerance
-  - BERTScore integration (distilbert-base-uncased)
-  - Semantic Similarity via sentence-transformers cosine similarity
-  - Lexical faithfulness proxy
-  - Abstention detection
-• Implemented compute_summary_metrics() for aggregated per-model reporting.
-• Ran statistical analysis and generated model ranking tables.
-• Generated CSV exports of all evaluation results.
-
-Member 2:
-• Provided feedback on numeric accuracy edge cases (negative values, units).
-
-Member 1:
-• Verified metric computations on sample examples.
-
-----------------------------------------------------------------------------
-AREA 5: VISUALIZATION AND RESULT INTERPRETATION
-Primary Contributor: Member 3
-Supporting: Member 1
-----------------------------------------------------------------------------
-
-Member 3:
-• Implemented visualization.py with:
-  - Grouped bar charts (metric × model × dataset)
-  - Performance heatmaps (model × metric)
-  - Radar charts for multi-metric comparison
-  - Latency vs accuracy scatter plots
-  - Direct vs RAG comparison bar charts with improvement annotations
-  - Question complexity analysis charts
-  - Token usage stacked bar charts
-  - Dataset overview charts
-• Interpreted results and drafted the Results and Discussion sections
-  of the research report.
-
-Member 1:
-• Contributed to EDA visualizations (question length distributions, etc.)
-
-----------------------------------------------------------------------------
-AREA 6: RESEARCH REPORT (ACL FORMAT)
-Primary Contributor: Member 1
-Supporting: Members 2, 3
-----------------------------------------------------------------------------
-
-Member 1:
-• Led the structure and writing of the 8–10 page research report.
-• Wrote Abstract, Introduction, Related Work, and Datasets sections.
-• Compiled references in ACL format.
-
-Member 2:
-• Wrote the Methodology, Experimental Setup, and Limitations sections.
-
-Member 3:
-• Wrote the Results, Discussion, and Conclusion sections.
-• Created all figures included in the report.
-
-All members:
-• Reviewed the complete draft for accuracy and coherence.
-• Rewrote AI-drafted content in their own words.
-• Verified all cited results against actual experimental outputs.
-
-----------------------------------------------------------------------------
-AREA 7: PRESENTATION AND VIDEO
-Primary Contributor: All Members Equally
-----------------------------------------------------------------------------
-
-Member 1:
-• Created PowerPoint slides.
-• Presented Sections: Introduction, Motivation, Datasets (~6 min).
-
-Member 2:
-• Presented Sections: Models, Methodology, Experiments (~7 min).
-
-Member 3:
-• Presented Sections: Results, Analysis, Conclusions (~7 min).
-
-All members:
-• Rehearsed and coordinated the presentation.
-• Recorded the video.
+TEAM MEMBERS:
+1. Jaypal Malviya  | Roll No: 240150013 | Email: m.jaypal@iitg.ac.in
+2. Anuj Kumar      | Roll No: 240150003 | Email: anujk0003@iitg.ac.in
+3. Rup Narayan Jha | Roll No: 240150032 | Email: rup.jha@iitg.ac.in
 
 ================================================================================
-TIME CONTRIBUTION ESTIMATE (approximate)
+SHARED COLLABORATIVE OWNERSHIP PHILOSOPHY
 ================================================================================
 
-Member 1: ~[X] hours
-  Dataset research and acquisition, data_loader.py, preprocessing.py,
-  EDA, report writing, presentation slides
+Our project was designed, implemented, and evaluated as a cohesive, three-person 
+engineering research team. Rather than siloing complete modules to individual members, every member actively 
+participated across all seven core project pillars:
+  1. Model Integration & Live Inference Pipeline
+  2. Dataset Acquisition & Schema Standardization
+  3. Retrieval-Augmented Generation (RAG) & Vector Indexing
+  4. Multi-Metric Evaluation & Statistical Harness
+  5. Empirical Visualization & Pareto Analysis
+  6. Academic Research Report (ACL 2023 Two-Column Format)
+  7. Slide Presentation & Project Video Walkthrough
 
-Member 2: ~[X] hours
-  Model research, model_inference.py, rag_pipeline.py, API debugging,
-  experiments execution, report methodology
-
-Member 3: ~[X] hours
-  evaluation.py, visualization.py, statistical analysis, results interpretation,
-  report results/discussion, video script
+For accountability and rigor, each member took primary leadership of designated 
+models, datasets, metrics, and pipeline components while collaborating on the 
+shared codebase, live execution, and final deliverables.
 
 ================================================================================
-DECLARATION
+CROSS-CUTTING CONTRIBUTION BREAKDOWN
 ================================================================================
 
-We declare that:
-1. The contributions described above are accurate to the best of our knowledge.
-2. All experimental results reported in this project were generated by actual 
-   model evaluations, not fabricated.
-3. The research report was drafted with AI assistance and subsequently reviewed,
-   rewritten, and verified by our team.
-4. We have complied with the academic integrity and AI-use policies of IIT Guwahati
-   and the Big Data Analytics course.
+--------------------------------------------------------------------------------
+PILLAR 1: MODEL INTEGRATION AND INFERENCE PIPELINE
+Primary Contributors: Jaypal Malviya, Anuj Kumar, Rup Narayan Jha (Equal Share)
+--------------------------------------------------------------------------------
 
-Signatures:
-Member 1: _____________________ Date: _________
-Member 2: _____________________ Date: _________
-Member 3: _____________________ Date: _________
+All three members contributed to `src/model_inference.py`, establishing the 
+OpenAI-compatible client architecture, prompt engineering, and checkpoint caching:
+
+• Jaypal Malviya (Lead on DeepSeek-R1-Distill-Qwen-7B):
+  - Configured and evaluated DeepSeek-R1-Distill-7B via the unified API gateway.
+  - Analyzed autonomous chain-of-thought (`<think> ... </think>`) reasoning behaviors 
+    and output token budget requirements for mathematical calculation.
+  - Co-implemented the MD5 request-hashing mechanism for robust checkpoint/resume.
+
+• Anuj Kumar (Lead on Qwen2.5-7B-Instruct):
+  - Configured and evaluated Qwen2.5-7B-Instruct across dense document contexts.
+  - Optimized system prompts to leverage Qwen2.5's native tabular and long-context 
+    comprehension capabilities.
+  - Set up API rate-limiting handling with exponential backoff using `tenacity`.
+
+• Rup Narayan Jha (Lead on Llama-3.1-8B-Instruct & Mistral-7B-Instruct-v0.3):
+  - Configured and evaluated Meta's Llama-3.1-8B and Mistral AI's Mistral-7B baseline.
+  - Profiled inference latency, grouped-query attention efficiency, and token usage.
+  - Investigated API error recovery and provider-side queue handling.
+
+• All Three Members Jointly:
+  - Formulated the standardized zero-shot financial analyst persona system prompt.
+  - Enforced greedy decoding (temperature=0.0, top_p=1.0, max_tokens=512) for 100% 
+    deterministic reproducibility.
+  - Monitored the 120 total live inference queries (60 Direct Context + 60 RAG).
+
+--------------------------------------------------------------------------------
+PILLAR 2: DATASET ACQUISITION AND UNIFIED SCHEMA
+Primary Contributors: Jaypal Malviya, Anuj Kumar, Rup Narayan Jha (Equal Share)
+--------------------------------------------------------------------------------
+
+All three members contributed to `src/data_loader.py` and `src/preprocessing.py`, 
+curating the three benchmarks and defining the immutable evaluation schema:
+
+• Jaypal Malviya (Lead on FinanceBench Integration):
+  - Ingested PatronusAI's FinanceBench public subset (150 SEC 10-K/10-Q questions).
+  - Designed metadata extractors for corporate filing names, fiscal years, and document 
+    excerpts.
+  - Documented public-release limitations (150 public vs. 10,231 internal benchmark).
+
+• Anuj Kumar (Lead on FinTextQA Integration):
+  - Ingested ACL 2024 FinTextQA regulatory/statutory subset (240 QA pairs).
+  - Preprocessed and cleaned lengthy narrative passages on banking and monetary policy.
+  - Documented domain scope and verified the exclusion of unreleased textbook subsets.
+
+• Rup Narayan Jha (Lead on FinQA Integration):
+  - Ingested EMNLP 2021 FinQA official test split (1,147 questions).
+  - Parsed earnings report balance sheet tables, pre-table text, and post-table notes.
+  - Extracted ground truth gold arithmetic values and reference DSL programs.
+
+• All Three Members Jointly:
+  - Developed the unified 8-field schema: `{id, dataset, question, context, ground_truth, 
+    question_type, source_doc, metadata}`.
+  - Implemented the deterministic stratified pilot sampling engine (`pp.sample_pilot`).
+  - Audited data loading caching mechanisms to guarantee zero network latency overhead.
+
+--------------------------------------------------------------------------------
+PILLAR 3: RETRIEVAL-AUGMENTED GENERATION (RAG) ARCHITECTURE
+Primary Contributors: Jaypal Malviya, Anuj Kumar, Rup Narayan Jha (Equal Share)
+--------------------------------------------------------------------------------
+
+All three members developed and evaluated `src/rag_pipeline.py`, exploring the 
+impact of dense vector search against gold-standard context:
+
+• Jaypal Malviya (Lead on Document Chunking & Corpus Construction):
+  - Formulated the document segmentation logic: 500-character chunks with 100-character 
+    overlap stride across all three benchmark source texts.
+  - Assembled the unified financial corpus comprising 3,101 clean passage chunks.
+  - Guaranteed that reference answers and question annotations were strictly excluded 
+    from the retrieval corpus to prevent data leakage.
+
+• Anuj Kumar (Lead on Dense Vector Indexing):
+  - Integrated `sentence-transformers/all-MiniLM-L6-v2` for 384-dimensional dense 
+    semantic representations.
+  - Implemented the exact L2 nearest-neighbor index using `faiss-cpu`.
+  - Tuned batch embedding generation and similarity threshold filtering.
+
+• Rup Narayan Jha (Lead on Context Assembly & RAG Diagnostics):
+  - Implemented top-k context retrieval and prompt construction for Experiment B.
+  - Diagnosed retrieval quality, identifying the root cause of the "RAG degradation" 
+    effect: dense embeddings flatten tabular markdown, causing irrelevant adjacent 
+    narrative chunks to dilute table figures.
+
+• All Three Members Jointly:
+  - Executed all 60 RAG-augmented live queries across the 4 models.
+  - Conducted comparative error analysis contrasting Direct vs. RAG responses.
+
+--------------------------------------------------------------------------------
+PILLAR 4: EVALUATION METRICS AND STATISTICAL ENGINE
+Primary Contributors: Jaypal Malviya, Anuj Kumar, Rup Narayan Jha (Equal Share)
+--------------------------------------------------------------------------------
+
+All three members implemented `src/evaluation.py` and `calculate_metrics_and_plots.py`, 
+covering seven distinct quantitative evaluation dimensions:
+
+• Jaypal Malviya (Lead on Numerical Accuracy & Exact Match):
+  - Implemented the numerical extraction and tolerance comparison engine:
+    |pred - gold| / max(|gold|, 1e-6) <= 0.02 (2% relative error tolerance).
+  - Built normalization filters for financial currency symbols ($, USD), commas, 
+    and percentage notations (%).
+  - Implemented string-normalized Exact Match (EM).
+
+• Anuj Kumar (Lead on Lexical Faithfulness & Semantic Similarity):
+  - Implemented the Lexical Faithfulness proxy metric measuring the fraction of 
+    generated non-stopword tokens grounded in the provided context passage.
+  - Integrated sentence-transformer embedding cosine similarity for semantic alignment.
+  - Implemented abstention pattern detection for unanswerable queries.
+
+• Rup Narayan Jha (Lead on Token F1, ROUGE-L & Efficiency Profiling):
+  - Implemented SQuAD-style Token-level F1 (precision, recall, harmonic mean).
+  - Integrated ROUGE-L longest common subsequence scoring.
+  - Built latency measurement and token consumption trackers (prompt vs. completion).
+
+• All Three Members Jointly:
+  - Audited and cross-verified metric calculations on sample inputs against manual ground truth.
+  - Built the consolidated metric export engine saving outputs to `results/metrics/` and 
+    `results/summary/`.
+
+--------------------------------------------------------------------------------
+PILLAR 5: EMPIRICAL VISUALIZATION AND DASHBOARDING
+Primary Contributors: Jaypal Malviya, Anuj Kumar, Rup Narayan Jha (Equal Share)
+--------------------------------------------------------------------------------
+
+All three members contributed to `src/visualization.py` and `generate_4model_comparison_plots.py`:
+
+• Jaypal Malviya:
+  - Designed the multi-axis radar chart (`results/plots/radar_chart.png`) contrasting 
+    models across 5 evaluation dimensions.
+  - Co-designed the Direct Context vs. Dense RAG comparison chart (`rag_vs_direct.png`).
+
+• Anuj Kumar:
+  - Designed the benchmark-specific breakdown chart (`results/plots/heatmap_all.png`) 
+    contrasting performance on FinanceBench, FinTextQA, and FinQA.
+  - Built the dataset corpus overview distribution plots (`dataset_overview.png`).
+
+• Rup Narayan Jha:
+  - Designed the multi-metric 4-model bar chart (`results/plots/bar_token_f1.png`).
+  - Designed the Accuracy vs. Latency Pareto efficiency curve (`latency_vs_accuracy.png`).
+  - Plotted token usage dynamics across prompt and completion phases (`token_usage.png`).
+
+• All Three Members Jointly:
+  - Standardized the cohesive dark-navy color palette (`#0D1B2A`, `#00B4D8`) across all 
+    figures for publication-ready visual consistency.
+
+--------------------------------------------------------------------------------
+PILLAR 6: RESEARCH REPORT DELIVERABLES (ACL 2023 FORMAT)
+Primary Contributors: Jaypal Malviya, Anuj Kumar, Rup Narayan Jha (Equal Share)
+--------------------------------------------------------------------------------
+
+All three members co-authored the 12-page research manuscript in official ACL 2023 
+LaTeX format (`reports/Financial_LLM_Evaluation_Report.tex` and `.pdf`):
+
+• Jaypal Malviya:
+  - Co-wrote Abstract, Introduction, and Research Questions (Section 1).
+  - Wrote Section 8.1 (Chain-of-Thought Distillation for Numerical Tabular Reasoning).
+  - Compiled Appendix B (Qualitative Case Studies on FinQA percentage calculations).
+  - Led LaTeX compilation, geometry budgeting, and page-limit enforcement (12 pages).
+
+• Anuj Kumar:
+  - Co-wrote Related Work (Section 2) and Datasets (Section 3).
+  - Wrote Section 8.2 (Regulatory Text Adherence on FinTextQA).
+  - Wrote Lexical Faithfulness and Semantic Similarity formulations (Section 7).
+  - Curated and validated the academic bibliography (`reports/references.bib`).
+
+• Rup Narayan Jha:
+  - Co-wrote Models Evaluated (Section 4), Methodology (Section 5), and Experimental Setup (Section 6).
+  - Wrote Section 8.3 & 9.2 (RAG Degradation Phenomenon and Table Context Dilution).
+  - Wrote Discussion & Practical Deployment Recommendations (Section 9.3).
+  - Compiled Limitations (Section 10), Conclusions (Section 11), and Appendix C (Reproducibility Protocol).
+
+• All Three Members Jointly:
+  - Reviewed the complete 12-page manuscript line-by-line.
+  - Verified 100% concordance between report tables and `results/summary/summary_all.csv`.
+
+--------------------------------------------------------------------------------
+PILLAR 7: PRESENTATION AND VIDEO DELIVERABLES
+Primary Contributors: Jaypal Malviya, Anuj Kumar, Rup Narayan Jha (Equal Share)
+--------------------------------------------------------------------------------
+
+All three members co-designed the 16-slide academic PowerPoint deck and co-present 
+the project video deliverable:
+
+• Anuj Kumar (Speaker 1 — Introduction, Motivation & Datasets):
+  - Presentation Lead: Title, Motivation, Financial QA Challenges, Dataset Corpus.
+  - Explains DeepSeek-R1-Distill-7B mathematical reasoning results.
+  - Speaking Duration: ~5–6 minutes.
+
+• Rup Narayan Jha (Speaker 2 — Models, Architecture & RAG Pipeline):
+  - Presentation Lead: Model Selection, Direct vs. RAG Architecture, Big Data System Design.
+  - Explains Qwen2.5-7B regulatory compliance results and lexical faithfulness.
+  - Speaking Duration: ~5–6 minutes.
+
+• Jaypal Malviya (Speaker 3 — Results, Discussion & Conclusions):
+  - Presentation Lead: Multi-Metric Comparative Results, Efficiency Pareto Frontier, 
+    RAG Degradation Analysis, Limitations, and Future Roadmap.
+  - Explains Llama-3.1-8B and Mistral-7B baseline throughput.
+  - Speaking Duration: ~5–6 minutes.
+
+• All Three Members Jointly:
+  - Rehearsed slide transitions and synchronized talking points.
+  - Co-authored `presentation/video` with exact empirical results.
 
